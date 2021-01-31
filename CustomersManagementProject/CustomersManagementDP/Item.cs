@@ -9,9 +9,20 @@ namespace CustomersManagementDP
 {
     public class Item
     {
+        public Item() { }
 
+        public Item(int id, string name, DateTime date, string location, string store_name, int quant, Categorie cat)
+        {
+            this.itemId = id;
+            this.itemName = name;
+            this.date_of_purchase = date;
+            this.store_location = location;
+            this.store_name = name;
+            this.quantity = quant;
+            this.categorie = cat;
+        }
 
-            private string itemId;
+            private int itemId;
             private string itemName;
             private DateTime date_of_purchase;
             private string store_location;
@@ -28,12 +39,12 @@ namespace CustomersManagementDP
             get { return categorie; }
             set { categorie = value; }
             }
-            public string ItemId
+            public int ItemId
             {
                 get { return itemId; }
                 set
                 {
-                    if (value.Length != 6)
+                    if (value < 100000)
                         throw new Exception("Id must contain 6 characters!");
 
                     itemId = value;
@@ -85,7 +96,7 @@ namespace CustomersManagementDP
             }
             #endregion
 
-        }
+        
     }
 }
 
