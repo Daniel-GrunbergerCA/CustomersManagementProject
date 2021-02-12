@@ -15,12 +15,20 @@ namespace CustomersManagementProject
         {
             IBL bl = new BL_imp();
             Categorie cat = bl.getAllCategories(x => x.CategorieId == 1).FirstOrDefault();
-            bl.AddItem(new Item(657657, "Banana", DateTime.Now, "Jerusalem", "OsherAd", 15, cat));
 
-           List<Item> items =  bl.getAllItems();
-            foreach (var item in items)
+            //  bl.AddItem(new Item(657659, "Banana", DateTime.Now, "Jerusalem", "OsherAd", 15, cat));
+
+
+             List<Item> items =  bl.getAllItems();
+              foreach (var item in items)
+              {
+                  Console.WriteLine(item.ToString());
+              }
+
+            List<Categorie> cats = bl.getAllCategories();
+            foreach (var c in cats)
             {
-                Console.WriteLine(item.ToString());
+                Console.WriteLine(c.ToString());
             }
             Console.ReadLine();
 

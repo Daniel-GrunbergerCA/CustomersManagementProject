@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="CustomerContext.cs" />
     <Compile Include="DAL_imp.cs" />
+    <Compile Include="DBReset.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

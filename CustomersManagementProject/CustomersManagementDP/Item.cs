@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,11 +26,11 @@ namespace CustomersManagementDP
 
             private int itemId;
             private string itemName;
-            private DateTime date_of_purchase;
+            private DateTime date_of_purchase = new DateTime();
             private string store_location;
             private string store_name;
             private int quantity;
-            private Categorie categorie;
+            private Categorie categorie = new Categorie();
 
 
             #region setters & getters
@@ -39,7 +41,11 @@ namespace CustomersManagementDP
             get { return categorie; }
             set { categorie = value; }
             }
-            public int ItemId
+
+
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ItemId
             {
                 get { return itemId; }
                 set

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,8 @@ namespace CustomersManagementDAL
 
         public CustomerContext() : base("CustomersDB")
         {
-            Database.SetInitializer<CustomerContext>(new DropCreateDatabaseIfModelChanges<CustomerContext>());
+           // Database.SetInitializer<CustomerContext>(new DropCreateDatabaseIfModelChanges<CustomerContext>());
+             Database.SetInitializer<CustomerContext>(null);
         }
 
         public DbSet<Item> Items { get; set; }
