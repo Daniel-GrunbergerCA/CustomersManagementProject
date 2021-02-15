@@ -22,6 +22,8 @@ namespace CustomersManagementBL
 
         List<Categorie> getAllCategories(Func<Categorie, bool> pred = null);
 
+        void RemoveCategorie(int id);
+
 
 
     }

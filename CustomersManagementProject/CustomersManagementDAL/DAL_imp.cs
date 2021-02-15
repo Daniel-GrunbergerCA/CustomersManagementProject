@@ -24,6 +24,7 @@ namespace CustomersManagementDAL
 
             using (var ctx = new CustomerContext())
             {
+                Categorie cat = ctx.Categories.Where(x => x.CategorieId == item.Categorie.CategorieId).FirstOrDefault();
                 ctx.Items.Add(item);
                 ctx.SaveChanges();
             }
@@ -33,6 +34,7 @@ namespace CustomersManagementDAL
         {
             using (var ctx = new CustomerContext())
             {
+              
                 if (pred == null)
                     return ctx.Categories.ToList();
                 else
@@ -60,6 +62,17 @@ namespace CustomersManagementDAL
                 ctx.Items.Remove(item);
                 ctx.SaveChanges();
             }
+        }
+
+        public void RemoveCategorie(int id)
+        {
+            using (var ctx = new CustomerContext())
+            {
+                Categorie cat = ctx.Categories.Find(id);
+                ctx.Categories.Remove(cat);
+                ctx.SaveChanges();
+            }
+
         }
 
         public void UpdateCategorie(Categorie categorie)

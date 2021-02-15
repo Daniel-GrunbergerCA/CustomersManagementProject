@@ -21,6 +21,7 @@ namespace CustomersManagementDP
             this.store_location = location;
             this.store_name = name;
             this.quantity = quant;
+         
             this.categorie = cat;
         }
 
@@ -39,19 +40,18 @@ namespace CustomersManagementDP
             public Categorie Categorie
             {
             get { return categorie; }
-            set { categorie = value; }
+            set {
+                
+                categorie = value; }
             }
 
 
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ItemId
             {
                 get { return itemId; }
                 set
                 {
-                    if (value < 100000)
-                        throw new Exception("Id must contain 6 characters!");
+                   
 
                     itemId = value;
                 }

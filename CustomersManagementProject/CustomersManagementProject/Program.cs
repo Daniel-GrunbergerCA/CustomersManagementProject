@@ -14,12 +14,16 @@ namespace CustomersManagementProject
         static void Main(string[] args)
         {
             IBL bl = new BL_imp();
+     //       Categorie newCat = new Categorie("Food", 1);
+
             Categorie cat = bl.getAllCategories(x => x.CategorieId == 1).FirstOrDefault();
+        //   Item it = new Item(1, "Banana", DateTime.Now, "Jerusalem", "OsherAd", 15, cat);
+          //  bl.UpdateItem(it);
+          
+            bl.AddItem(new Item(200005, "Apple", DateTime.Now, "Jerusalem", "OsherAd", 10, cat));
 
-            //  bl.AddItem(new Item(657659, "Banana", DateTime.Now, "Jerusalem", "OsherAd", 15, cat));
-
-
-             List<Item> items =  bl.getAllItems();
+          
+            List<Item> items =  bl.getAllItems();
               foreach (var item in items)
               {
                   Console.WriteLine(item.ToString());
@@ -30,6 +34,7 @@ namespace CustomersManagementProject
             {
                 Console.WriteLine(c.ToString());
             }
+            Console.WriteLine("Hi");
             Console.ReadLine();
 
         }

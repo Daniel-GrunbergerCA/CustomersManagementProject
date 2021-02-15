@@ -14,8 +14,10 @@ namespace CustomersManagementDAL
 
         public CustomerContext() : base("CustomersDB")
         {
-           // Database.SetInitializer<CustomerContext>(new DropCreateDatabaseIfModelChanges<CustomerContext>());
-             Database.SetInitializer<CustomerContext>(null);
+
+            //Database.SetInitializer<CustomerContext>(new DropCreateDatabaseIfModelChanges<CustomerContext>());
+            Database.SetInitializer<CustomerContext>(new DropCreateDatabaseIfModelChanges<CustomerContext>());
+            //  Database.SetInitializer<CustomerContext>(null);
         }
 
         public DbSet<Item> Items { get; set; }
