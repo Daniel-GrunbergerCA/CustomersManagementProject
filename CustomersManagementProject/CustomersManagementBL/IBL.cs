@@ -16,11 +16,9 @@ namespace CustomersManagementBL
         void UpdateItem(Item item);
 
         List<Item> getAllItems(Func<Item, bool> pred = null);
-        void AddCategorie(Categorie categorie);
+        
 
-        void UpdateCategorie(Categorie categorie);
-
-        List<Categorie> getAllCategories(Func<Categorie, bool> pred = null);
+     
 
 
 

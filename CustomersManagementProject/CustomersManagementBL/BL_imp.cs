@@ -16,21 +16,14 @@ namespace CustomersManagementBL
         {
             idal = new DAL_imp();
         }
-        public void AddCategorie(Categorie categorie)
-        {
-            idal.AddCategorie(categorie);
-        }
+  
 
         public void AddItem(Item item)
         {
             idal.AddItem(item);
         }
 
-        public List<Categorie> getAllCategories(Func<Categorie, bool> pred = null)
-        {
-            return idal.getAllCategories(pred);
-        }
-
+       
         public List<Item> getAllItems(Func<Item, bool> pred = null)
         {
            return idal.getAllItems(pred);
@@ -41,10 +34,7 @@ namespace CustomersManagementBL
             idal.RemoveItem(itemId);
         }
 
-        public void UpdateCategorie(Categorie categorie)
-        {
-            idal.UpdateCategorie(categorie);
-        }
+    
 
         public void UpdateItem(Item item)
         {

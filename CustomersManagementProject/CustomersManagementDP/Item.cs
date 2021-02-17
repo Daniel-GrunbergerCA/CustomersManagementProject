@@ -13,7 +13,7 @@ namespace CustomersManagementDP
     {
         public Item() { }
 
-        public Item(int id, string name, DateTime date, string location, string store_name, int quant, Categorie cat)
+        public Item(int id, string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey )
         {
             this.itemId = id;
             this.itemName = name;
@@ -22,6 +22,8 @@ namespace CustomersManagementDP
             this.store_name = name;
             this.quantity = quant;
             this.categorie = cat;
+            this.description = description;
+            this.serialKey = serialKey;
         }
 
             private int itemId;
@@ -30,13 +32,15 @@ namespace CustomersManagementDP
             private string store_location;
             private string store_name;
             private int quantity;
-            private Categorie categorie = new Categorie();
+            private Enums.TYPE categorie;
+            private string serialKey;
+            private string description;
 
 
-            #region setters & getters
-            
+        #region setters & getters
 
-            public Categorie Categorie
+
+        public Enums.TYPE Categorie
             {
             get { return categorie; }
             set { categorie = value; }
@@ -50,13 +54,17 @@ namespace CustomersManagementDP
                 get { return itemId; }
                 set
                 {
-                    if (value < 100000)
-                        throw new Exception("Id must contain 6 characters!");
+                   
 
                     itemId = value;
                 }
             }
 
+        public string Description
+        {
+            get { return description; }
+            set { description = value; }
+        }
 
             public int Quantity
             {
@@ -81,6 +89,11 @@ namespace CustomersManagementDP
                 set { store_location = value; }
             }
             
+            public string SerialKey
+        {
+            get { return serialKey; }
+            set { serialKey = value; }
+        }
             public string ItemName
             {
                 get { return itemName; }

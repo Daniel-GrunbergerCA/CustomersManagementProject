@@ -9,15 +9,7 @@ namespace CustomersManagementDAL
 {
     public class DAL_imp : IDAL
     {
-        public void AddCategorie(Categorie categorie)
-        {
-
-            using (var ctx = new CustomerContext())
-            {
-                ctx.Categories.Add(categorie);
-                ctx.SaveChanges();
-            }
-        }
+      
 
         public void AddItem(Item item)
         {
@@ -29,16 +21,7 @@ namespace CustomersManagementDAL
             }
         }
 
-        public List<Categorie> getAllCategories(Func<Categorie, bool> pred = null)
-        {
-            using (var ctx = new CustomerContext())
-            {
-                if (pred == null)
-                    return ctx.Categories.ToList();
-                else
-                    return ctx.Categories.Where(pred).ToList();
-            }
-        }
+       
 
         public List<Item> getAllItems(Func<Item, bool> pred = null)
         {
@@ -62,16 +45,7 @@ namespace CustomersManagementDAL
             }
         }
 
-        public void UpdateCategorie(Categorie categorie)
-        {
-            using (var ctx = new CustomerContext())
-            {
-                var categorieToUpdate = ctx.Categories.Find(categorie.CategorieId);
-                categorieToUpdate.CategorieName = categorie.CategorieName;
-                ctx.SaveChanges();
-
-            }
-        }
+      
 
         public void UpdateItem(Item item)
         {
