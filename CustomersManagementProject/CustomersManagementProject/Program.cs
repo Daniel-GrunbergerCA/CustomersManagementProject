@@ -14,15 +14,14 @@ namespace CustomersManagementProject
         static void Main(string[] args)
         {
             IBL bl = new BL_imp();
-            //Categorie cat = bl.getAllCategories(x => x.CategorieId == 1).FirstOrDefault();
-            //  Categorie cat = new Categorie("Food", 1);
-            //  bl.AddItem(new Item(657659, "Banana", DateTime.Now, "Jerusalem", "OsherAd", 15, cat));
-            bl.AddItem(new Item(666, "Apple", DateTime.Now, "Jerusalem", "Rami Levi", 15, Enums.TYPE.Food, "JuicyKey","atge948"));
 
+
+            bl.RemoveItem(1);
+            bl.AddItem(new Item(555, "Pasta", DateTime.Now, "Tel-Aviv", "Rami Levi", 8, Enums.TYPE.Food, "Sweet Pasta", "iuor643"));
              List<Item> items =  bl.getAllItems();
             foreach (var item in items)
             {
-                Console.WriteLine(item.ItemName + " " + item.Description + " " + item.SerialKey + " " + item.Store_location + " " +item.Store_name );
+                Console.WriteLine(item.ItemId + " " +item.ItemName + " " + item.Description + " " + item.SerialKey + " " + item.Store_location + " " +item.Store_name );
               }
 
            

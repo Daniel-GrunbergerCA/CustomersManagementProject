@@ -20,7 +20,7 @@ namespace CustomersManagementBL
 
      
 
-        void RemoveCategorie(int id);
+    
 
 
 

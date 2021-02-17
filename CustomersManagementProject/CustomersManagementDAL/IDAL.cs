@@ -18,7 +18,7 @@ namespace CustomersManagementDAL
         List <Item> getAllItems(Func<Item, bool> pred = null);
        
 
-        void RemoveCategorie(int id);
+     
 
 
 

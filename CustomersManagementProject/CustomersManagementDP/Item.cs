@@ -19,7 +19,7 @@ namespace CustomersManagementDP
             this.itemName = name;
             this.date_of_purchase = date;
             this.store_location = location;
-            this.store_name = name;
+            this.store_name = store_name;
             this.quantity = quant;
          
             this.categorie = cat;

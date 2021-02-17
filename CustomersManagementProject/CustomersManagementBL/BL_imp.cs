@@ -16,14 +16,12 @@ namespace CustomersManagementBL
         {
             idal = new DAL_imp();
         }
-  
-
+          
         public void AddItem(Item item)
         {
             idal.AddItem(item);
         }
-
-       
+        
         public List<Item> getAllItems(Func<Item, bool> pred = null)
         {
            return idal.getAllItems(pred);
@@ -32,18 +30,14 @@ namespace CustomersManagementBL
         public void RemoveItem(int itemId)
         {
             idal.RemoveItem(itemId);
-        }
-
-    
+        }    
 
         public void UpdateItem(Item item)
         {
             idal.UpdateItem(item);
         }
 
-        public void RemoveCategorie(int id)
-        {
-            idal.RemoveCategorie(id);
-        }
+        
+
     }
 }
