@@ -16,6 +16,7 @@ namespace CustomersManagementDAL
 
             using (var ctx = new CustomerContext())
             {
+                Categorie cat = ctx.Categories.Where(x => x.CategorieId == item.Categorie.CategorieId).FirstOrDefault();
                 ctx.Items.Add(item);
                 ctx.SaveChanges();
             }

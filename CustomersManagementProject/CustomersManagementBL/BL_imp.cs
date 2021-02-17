@@ -40,5 +40,10 @@ namespace CustomersManagementBL
         {
             idal.UpdateItem(item);
         }
+
+        public void RemoveCategorie(int id)
+        {
+            idal.RemoveCategorie(id);
+        }
     }
 }
