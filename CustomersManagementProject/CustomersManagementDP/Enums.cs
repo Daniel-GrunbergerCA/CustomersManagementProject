@@ -12,5 +12,10 @@ namespace CustomersManagementDP
         {
             Food, Eletronic, Clothing, Accessories
         }
+
+        public enum STAT
+        {
+            Products, Stores, Categories, Costs
+        }
     }
 }

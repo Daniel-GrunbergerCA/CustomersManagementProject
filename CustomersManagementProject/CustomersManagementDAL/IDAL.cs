@@ -16,14 +16,12 @@ namespace CustomersManagementDAL
         void UpdateItem(Item item);
 
         List <Item> getAllItems(Func<Item, bool> pred = null);
-       
 
-     
+        IEnumerable<IGrouping<DateTime, Item>> getGroupByDate();
+        IEnumerable<IGrouping<string, Item>> getGroupBySerialKey();
 
-
-
-
-
+        // just a check
+        IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate();
 
 
 

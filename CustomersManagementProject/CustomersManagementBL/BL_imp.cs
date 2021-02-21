@@ -27,6 +27,30 @@ namespace CustomersManagementBL
            return idal.getAllItems(pred);
         }
 
+        public IEnumerable<IGrouping<DateTime,Item>> GetDateGroups()
+        {
+            return idal.getGroupByDate();
+        }
+
+        public IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate()
+        {
+            return idal.groupByDate();
+        }
+
+        public List<Tuple<string, string>> getAllProductsTupleNameKey()
+        {
+            List<Tuple<string,string>> productsNameKey = new List<Tuple<string,string>>();
+            foreach (var group in idal.getGroupBySerialKey())
+            {
+                productsNameKey.Add(new Tuple<string,string>(group.Key,group.First().ItemName));
+            }
+            return productsNameKey;
+        }
+
+
+
+
+
         public void RemoveItem(int itemId)
         {
             idal.RemoveItem(itemId);

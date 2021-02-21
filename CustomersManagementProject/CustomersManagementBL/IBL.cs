@@ -16,13 +16,11 @@ namespace CustomersManagementBL
         void UpdateItem(Item item);
 
         List<Item> getAllItems(Func<Item, bool> pred = null);
-        
 
-     
+        IEnumerable<IGrouping<DateTime, Item>> GetDateGroups();
+        List<Tuple<string,string>> getAllProductsTupleNameKey();
 
-    
-
-
+        IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate();
 
     }
 }

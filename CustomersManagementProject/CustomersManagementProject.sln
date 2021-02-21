@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersManagementBL", "Cu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersManagementDP", "CustomersManagementDP\CustomersManagementDP.csproj", "{D780D1B8-D6A1-4B4E-9575-50DB4DEA8375}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersManagementProjectWpf", "CustomersManagementProjectWpf\CustomersManagementProjectWpf.csproj", "{FA5322C6-F221-416D-8E66-544A8A91CE77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerManagementPL", "CustomerManagementPL\CustomerManagementPL.csproj", "{A109D537-9AFD-4823-9B03-5325C508948C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,10 @@ Global
 		{D780D1B8-D6A1-4B4E-9575-50DB4DEA8375}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D780D1B8-D6A1-4B4E-9575-50DB4DEA8375}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D780D1B8-D6A1-4B4E-9575-50DB4DEA8375}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA5322C6-F221-416D-8E66-544A8A91CE77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA5322C6-F221-416D-8E66-544A8A91CE77}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA5322C6-F221-416D-8E66-544A8A91CE77}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA5322C6-F221-416D-8E66-544A8A91CE77}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A109D537-9AFD-4823-9B03-5325C508948C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A109D537-9AFD-4823-9B03-5325C508948C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A109D537-9AFD-4823-9B03-5325C508948C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A109D537-9AFD-4823-9B03-5325C508948C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

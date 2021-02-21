@@ -15,14 +15,14 @@ namespace CustomersManagementProject
         {
             IBL bl = new BL_imp();
 
-
-            bl.RemoveItem(1);
-            bl.AddItem(new Item(555, "Pasta", DateTime.Now, "Tel-Aviv", "Rami Levi", 8, Enums.TYPE.Food, "Sweet Pasta", "iuor643"));
+            //bl.UpdateItem(new Item(2, "Pasta", DateTime.Now, "Tel-Aviv", "Rami Levi", 8, Enums.TYPE.Food, "Sweet Pasta!!!", "iuor643"));
+            //bl.AddItem(new Item("Pasta", DateTime.Now, "Tel-Aviv", "Rami Levi", 8, Enums.TYPE.Food, "Sweet Pasta!!!", "iuor643", 25.00));
+            //bl.RemoveItem(2);
              List<Item> items =  bl.getAllItems();
             foreach (var item in items)
             {
-                Console.WriteLine(item.ItemId + " " +item.ItemName + " " + item.Description + " " + item.SerialKey + " " + item.Store_location + " " +item.Store_name );
-              }
+                Console.WriteLine(item.ItemId + " " +item.ItemName + " " + item.Description + " " + item.SerialKey + " " + item.Store_location + " " +item.Store_name + " "+item.Price);
+            }
 
            
             Console.ReadLine();

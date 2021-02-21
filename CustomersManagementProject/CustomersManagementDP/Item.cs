@@ -13,29 +13,57 @@ namespace CustomersManagementDP
     {
         public Item() { }
 
-        public Item(int id, string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey )
+        //public Item(int id, string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey, double price)
+        //{
+        //    this.itemId = id;
+        //    this.itemName = name;
+        //    this.date_of_purchase = date;
+        //    this.store_location = location;
+        //    this.store_name = store_name;
+        //    this.quantity = quant;
+        //    this.categorie = cat;
+        //    this.description = description;
+        //    this.serialKey = serialKey;
+        //    this.price = price;
+        //}
+
+        public Item(string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey, double price)
         {
-            this.itemId = id;
             this.itemName = name;
             this.date_of_purchase = date;
             this.store_location = location;
             this.store_name = store_name;
             this.quantity = quant;
-         
             this.categorie = cat;
             this.description = description;
             this.serialKey = serialKey;
+            this.price = price;
         }
 
-            private int itemId;
-            private string itemName;
-            private DateTime date_of_purchase = new DateTime();
-            private string store_location;
-            private string store_name;
-            private int quantity;
-            private Enums.TYPE categorie;
-            private string serialKey;
-            private string description;
+        public Item(Item item)
+        {
+            this.itemId = item.itemId;
+            this.itemName = item.itemName;
+            this.date_of_purchase = item.date_of_purchase;
+            this.store_location = item.store_location;
+            this.store_name = item.store_name;
+            this.quantity = item.quantity;
+            this.categorie = item.categorie;
+            this.description = item.description;
+            this.serialKey = item.serialKey;
+            this.price = item.price;
+        }
+
+        private int itemId;
+        private string itemName;
+        private DateTime date_of_purchase = new DateTime();
+        private string store_location;
+        private string store_name;
+        private int quantity;
+        private Enums.TYPE categorie;
+        private string serialKey;
+        private string description;
+        private double price;
 
 
         #region setters & getters
@@ -91,14 +119,19 @@ namespace CustomersManagementDP
             }
             
             public string SerialKey
-        {
-            get { return serialKey; }
-            set { serialKey = value; }
-        }
+            {
+                get { return serialKey; }
+                set { serialKey = value; }
+            }
             public string ItemName
             {
                 get { return itemName; }
                 set { itemName = value; }
+            }
+            public double Price
+            {
+                get { return price; }
+                set { price = value; }
             }
             public DateTime Date_of_purchase
             {
