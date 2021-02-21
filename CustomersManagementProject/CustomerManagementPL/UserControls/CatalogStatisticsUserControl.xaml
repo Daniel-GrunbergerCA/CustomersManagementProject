@@ -20,7 +20,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="1" >
             <materialDesign:ColorZone Mode="PrimaryMid"  HorizontalAlignment="Left" Margin="10 0 0 0" VerticalAlignment="Bottom" Background="#FF3C75B3" >
                 <StackPanel Orientation="Horizontal" Margin="2" >
-                    <RadioButton Name="lineChartButton"  Style="{StaticResource MaterialDesignTabRadioButton}" Height="40" Margin="2 2 2 0" IsChecked="True" Content="TIME LINE" BorderBrush="#FFF0F16E" Background="#7F4D9DD6" Click="LineChart_Click" />
+                    <RadioButton Name="lineChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="40" Margin="2 2 2 0" IsChecked="True" Content="TIME LINE" BorderBrush="#FFF0F16E" Background="#7F4D9DD6" Click="LineChart_Click" />
                     <RadioButton Name="barChartButton" Style="{StaticResource MaterialDesignTabRadioButton}" Height="40" Margin="2 2 2 0" IsChecked="False" Content="BAR CHART" BorderBrush="#FFF0F16E" Background="#7F4D9DD6" Click="BarChart_Click" />
                 </StackPanel>
             </materialDesign:ColorZone>

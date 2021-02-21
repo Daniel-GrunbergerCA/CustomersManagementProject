@@ -5,10 +5,12 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using CustomerManagementPL.Commands;
 using CustomerManagementPL.Models;
+using CustomerManagementPL.UserControls;
 using CustomersManagementDP;
 
 namespace CustomerManagementPL.ViewModels
@@ -86,6 +88,12 @@ namespace CustomerManagementPL.ViewModels
         {
             itemsModel.UpdateItem(Product);
         }
+
+
+
+
+
+
 
     }
 }
