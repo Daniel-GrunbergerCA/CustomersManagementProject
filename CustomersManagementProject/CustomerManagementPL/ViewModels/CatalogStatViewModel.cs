@@ -46,8 +46,8 @@ namespace CustomerManagementPL.ViewModels
             SelectedIndexYear = 0;
             SelectedIndexMonth = -1;
             SelectedIndexWeek = -1;
-
-            BasicLineChart();
+            LineChart();
+            //BasicLineChart();
             BasicBarChart();
         }
 
@@ -116,9 +116,6 @@ namespace CustomerManagementPL.ViewModels
             // filter for category stat
         }
         
-        public int Year { get; set; }
-        public int Month { get; set; }
-        public int Week { get; set; }
 
 
         public List<string> AggregationDay { get; set; }
@@ -126,24 +123,37 @@ namespace CustomerManagementPL.ViewModels
         public List<string> AggregationMonth { get; set; }
         public List<string> AggregationYear { get; set; }
 
-
+        Dictionary<string, int[]> itemKeys = new Dictionary<string, int[]> { };
 
         public void aggregateWeek()
         {
-            Dictionary<string, double[]> itemKeys = new Dictionary<string, double[]> { };
-
-            foreach (Item item in itemsModel.GetWeekItems(Week, Month, Year))
+            foreach (Item item in itemsModel.GetWeekItems(2, 1, 2013))
             {
                 if (itemKeys.ContainsKey(item.SerialKey))
                 {
-                    itemKeys[item.SerialKey][item.Date_of_purchase.Day] += item.Quantity;
+                    itemKeys[item.SerialKey][(item.Date_of_purchase.Day) % AggregationDay.Count()] += item.Quantity;
                 }
                 else
                 {
-                    itemKeys.Add(item.SerialKey, new double[AggregationDay.Count()]);
+                    itemKeys.Add(item.SerialKey, new int[AggregationDay.Count()]);
+                    itemKeys[item.SerialKey][(item.Date_of_purchase.Day) % AggregationDay.Count()] = item.Quantity;
                 }
             }
-
+        }
+        public void LineChart()
+        {
+            aggregateWeek();
+            SeriesLineCollection = new SeriesCollection();
+            foreach(var item in itemKeys)
+            {
+                SeriesLineCollection.Add(new LineSeries
+                {
+                    Title = item.Key, Values = new ChartValues<int>(itemKeys[item.Key])
+                });
+            }
+            //axis.LabelFormatter = x => x.ToString("N0");
+            LineFormatter = value => value.ToString("N0");
+            LineLabels = AggregationDay;
         }
 
 
@@ -183,7 +193,7 @@ namespace CustomerManagementPL.ViewModels
                     Values = new ChartValues<double> { 6, 7, 3, 4 ,6 }
                 }
             };
-            LineLabels = new[] { "Jan", "Feb", "Mar", "Apr", "May" };
+            //LineLabels = new[] { "Jan", "Feb", "Mar", "Apr", "May" };
             LineFormatter = value => value.ToString("C");
 
             //modifying the series collection will animate and update the chart
@@ -224,10 +234,9 @@ namespace CustomerManagementPL.ViewModels
             BarFormatter = value => value.ToString("N");
         }
 
-
-
+        
         public SeriesCollection SeriesLineCollection { get; set; }
-        public string[] LineLabels { get; set; }
+        public List<string> LineLabels { get; set; }
         public Func<double, string> LineFormatter { get; set; }
 
         public SeriesCollection SeriesBarCollection { get; set; }

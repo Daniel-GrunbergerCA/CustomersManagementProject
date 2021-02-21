@@ -11,12 +11,18 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <ScrollViewer VerticalScrollBarVisibility="Auto" Margin="2" Background="White">
-            <lvc:CartesianChart Series="{Binding SeriesLineCollection}" MinHeight="200" MinWidth="400" LegendLocation="Right" >
+            <lvc:CartesianChart  Series="{Binding SeriesLineCollection}" MinHeight="200" MinWidth="400" LegendLocation="Right" >
                 <lvc:CartesianChart.AxisY>
-                    <lvc:Axis Title="Sales" LabelFormatter="{Binding LineFormatter}"></lvc:Axis>
+                    <lvc:Axis Title="Quantity" LabelFormatter="{Binding LineFormatter}">
+                        <lvc:Axis.Separator>
+                            <lvc:Separator Step="1"></lvc:Separator>
+                        </lvc:Axis.Separator>
+                    </lvc:Axis>
+                   
+                   
                 </lvc:CartesianChart.AxisY>
                 <lvc:CartesianChart.AxisX>
-                    <lvc:Axis Title="Month" Labels="{Binding LineLabels}"></lvc:Axis>
+                    <lvc:Axis Title="Date" Labels="{Binding LineLabels}"></lvc:Axis>
                 </lvc:CartesianChart.AxisX>
             </lvc:CartesianChart>
         </ScrollViewer>

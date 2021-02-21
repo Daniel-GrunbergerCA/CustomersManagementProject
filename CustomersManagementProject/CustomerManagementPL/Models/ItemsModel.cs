@@ -41,7 +41,7 @@ namespace CustomerManagementPL.Models
         {
             return bl.getAllItems(x => x.Date_of_purchase.Year == year &&
                                        x.Date_of_purchase.Month == month && 
-                                       ((x.Date_of_purchase.Month % 4) == (week+1)));
+                                       ((x.Date_of_purchase.Day / 7) == (week-1)));
         }
 
         public IEnumerable<IGrouping<DateTime,Item>> GetDateGroups()
