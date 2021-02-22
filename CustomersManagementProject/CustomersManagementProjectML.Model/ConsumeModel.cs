@@ -27,7 +27,7 @@ namespace CustomersManagementProjectML.Model
             MLContext mlContext = new MLContext();
 
             // Load model & create prediction engine
-            string modelPath = @"C:\Users\Grunba\AppData\Local\Temp\MLVSTools\CustomersManagementProjectML\CustomersManagementProjectML.Model\MLModel.zip";
+            string modelPath = "MLModel.zip";
             ITransformer mlModel = mlContext.Model.Load(modelPath, out var modelInputSchema);
             var predEngine = mlContext.Model.CreatePredictionEngine<ModelInput, ModelOutput>(mlModel);
 
