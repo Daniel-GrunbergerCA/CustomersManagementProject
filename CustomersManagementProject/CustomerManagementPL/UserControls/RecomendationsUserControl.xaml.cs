@@ -1,4 +1,7 @@
 ﻿using CustomerManagementPL.ViewModels;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +31,30 @@ namespace CustomerManagementPL.UserControls
             DataContext = currentVM;
         }
 
-
+        /*private void CreatePdfButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog() { Filter = "PDF files|*.pdf", ValidateNames = true, Multiselect = false };
+        
+                if (ofd.ShowDialog() ==true)
+                {
+                    try
+                    {
+                        iTextSharp.text.pdf.PdfReader reader = new iTextSharp.text.pdf.PdfReader(ofd.FileName);
+                        StringBuilder sb = new StringBuilder();
+                        for (int  i=1; i<=reader.NumberOfPages;i++)
+                        {
+                            sb.Append(PdfTextExtractor.GetTextFromPage(reader, i));
+                        }
+                        PdfOutput.Text += sb.ToString();
+                        reader.Close();
+                    }
+                    catch(Exception ex)
+                    {
+                        MessageBox.Show("Error");
+                    }
+                
+            }
+        }*/
     }
-}
+    }
+
