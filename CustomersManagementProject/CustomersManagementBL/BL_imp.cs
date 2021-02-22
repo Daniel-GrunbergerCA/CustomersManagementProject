@@ -10,7 +10,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.ML;
-
+using System.Drawing;
+using Font = iTextSharp.text.Font;
 
 namespace CustomersManagementBL
 {
@@ -47,10 +48,31 @@ namespace CustomersManagementBL
             List<string> storeNames = getAllStoreNames();
             List<Tuple<string, string>> tuples = getAllProductsTupleNameKey();
             string text = "";
+            
+             PdfPTable table = new PdfPTable(2);
 
-            foreach (var store in storeNames)
+             PdfPCell cell = new PdfPCell(new Phrase("Item Name"));
+
+            cell.Colspan = 1;
+
+            cell.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+
+            table.AddCell(cell);
+            PdfPCell cell2 = new PdfPCell(new Phrase("Store Name"));
+
+            cell2.Colspan = 1;
+
+            cell2.HorizontalAlignment = 1; //0=Left, 1=Centre, 2=Right
+
+            table.AddCell(cell2);
+
+
+            
+            foreach (var tuple in tuples)
             {
-                foreach (var tuple in tuples)
+                float bestScore = 0;
+                string storeName = "";
+                foreach (var store in storeNames)
                 {
                     ModelInput sampleData = new ModelInput()
                     {
@@ -58,18 +80,40 @@ namespace CustomersManagementBL
                         SerialKey = tuple.Item1,
                     };
                     var predictionResult = ConsumeModel.Predict(sampleData);
-                    text +=($"Store_name: {sampleData.Store_name}");
-                    text += ($"SerialKey: {sampleData.SerialKey}");
-                    text += ($"\n\nPredicted Rating: {predictionResult.Score}\n\n");
-                }
-               
+                    if (predictionResult.Score>=bestScore || bestScore==0)
+                    {
+                        bestScore = predictionResult.Score;
+                        storeName = store;
+                    }
+        }
+                /*text += ($"Item Name: {tuple.Item2}  ");
+                text += ($"Store Name: {storeName}   ");
+                text += "\n\n";*/
+                table.AddCell(tuple.Item2);
+                table.AddCell(storeName);
             }
             Document doc = new Document(PageSize.A4, 7f, 5f, 5f, 0f);
             doc.AddTitle("Machine Learning results");
             PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "CreatePdf.pdf", FileMode.Create));
             doc.Open();
-            Paragraph p1 = new Paragraph(text);
-            doc.Add(p1);
+            //     Paragraph p1 = new Paragraph(text);
+            //   doc.Add(p1);
+           
+            doc.Add(table);
+            Font x = FontFactory.GetFont("nina fett");
+
+            x.Size = 19;
+
+            x.SetStyle("Italic");
+
+            x.SetColor(0, 42, 255);
+
+
+            Paragraph c2 = new Paragraph(@"Based on our recommendations for which products to buy in which store", x);
+            c2.IndentationLeft = 30;
+            doc.Add(c2);
+
+
             doc.Close();
 
         }
