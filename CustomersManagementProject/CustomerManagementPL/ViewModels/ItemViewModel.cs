@@ -53,6 +53,19 @@ namespace CustomerManagementPL.ViewModels
             }
         }
 
+        public int Rating
+        {
+            get
+            {
+                return Product.Rating;
+            }
+            set
+            {
+                Product.Rating = value;
+                if (null != PropertyChanged)
+                    PropertyChanged(this, new PropertyChangedEventArgs("Rating"));
+            }
+        }
         public Item Product { get; set; }
 
         public ItemViewModel(Item item, ItemsModel itemsModel)

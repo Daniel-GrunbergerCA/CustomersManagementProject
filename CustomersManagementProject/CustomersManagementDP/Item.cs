@@ -27,7 +27,7 @@ namespace CustomersManagementDP
         //    this.price = price;
         //}
 
-        public Item(string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey, double price)
+        public Item(string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey, double price, int rating)
         {
             this.itemName = name;
             this.date_of_purchase = date;
@@ -38,6 +38,7 @@ namespace CustomersManagementDP
             this.description = description;
             this.serialKey = serialKey;
             this.price = price;
+            this.rating = rating;
         }
 
         public Item(Item item)
@@ -52,6 +53,7 @@ namespace CustomersManagementDP
             this.description = item.description;
             this.serialKey = item.serialKey;
             this.price = item.price;
+            this.rating = item.rating;
         }
 
         private int itemId;
@@ -64,11 +66,15 @@ namespace CustomersManagementDP
         private string serialKey;
         private string description;
         private double price;
-
+        private int rating = 4; // Default is 4
 
         #region setters & getters
 
-
+        public int Rating
+        {
+            get { return rating; }
+            set { rating = value; }
+        }
         public Enums.TYPE Categorie
             {
             get { return categorie; }

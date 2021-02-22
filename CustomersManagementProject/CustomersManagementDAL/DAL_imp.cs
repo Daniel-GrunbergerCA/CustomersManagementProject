@@ -140,6 +140,7 @@ namespace CustomersManagementDAL
                 itemToUpdate.Categorie = item.Categorie;
                 itemToUpdate.Description = item.Description;
                 itemToUpdate.Date_of_purchase = item.Date_of_purchase;
+                itemToUpdate.Rating = item.Rating;
                 ctx.SaveChanges();
             }
         
