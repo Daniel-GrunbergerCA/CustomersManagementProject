@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomersManagementDP", "Cu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomerManagementPL", "CustomerManagementPL\CustomerManagementPL.csproj", "{A109D537-9AFD-4823-9B03-5325C508948C}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomersManagementProjectML.Model", "CustomersManagementProjectML.Model\CustomersManagementProjectML.Model.csproj", "{529151C8-6A6F-46F6-8253-5FBC7438C097}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomersManagementProjectML.ConsoleApp", "CustomersManagementProjectML.ConsoleApp\CustomersManagementProjectML.ConsoleApp.csproj", "{506F3998-9C4D-4BEF-B1A8-4972E8F87F1A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{A109D537-9AFD-4823-9B03-5325C508948C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A109D537-9AFD-4823-9B03-5325C508948C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A109D537-9AFD-4823-9B03-5325C508948C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{529151C8-6A6F-46F6-8253-5FBC7438C097}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{529151C8-6A6F-46F6-8253-5FBC7438C097}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{529151C8-6A6F-46F6-8253-5FBC7438C097}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{529151C8-6A6F-46F6-8253-5FBC7438C097}.Release|Any CPU.Build.0 = Release|Any CPU
+		{506F3998-9C4D-4BEF-B1A8-4972E8F87F1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{506F3998-9C4D-4BEF-B1A8-4972E8F87F1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{506F3998-9C4D-4BEF-B1A8-4972E8F87F1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{506F3998-9C4D-4BEF-B1A8-4972E8F87F1A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

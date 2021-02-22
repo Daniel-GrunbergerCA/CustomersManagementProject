@@ -21,5 +21,11 @@ namespace CustomersManagementBL
         IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate();
 
         List<Tuple<string, string>> getAllProductsTupleNameKey();
+
+        List<string> getAllStoreNames();
+
+        void CreatePdfForStoreRecomendations();
+
+
     }
 }

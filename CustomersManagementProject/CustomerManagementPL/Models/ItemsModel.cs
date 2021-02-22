@@ -31,6 +31,7 @@ namespace CustomerManagementPL.Models
             return bl.getAllItems(x => x.Date_of_purchase.Year == year);
         }
 
+     
         public List<Item> GetMonthItems(int month, int year)
         {
             return bl.getAllItems(x => x.Date_of_purchase.Year == year &&
@@ -54,6 +55,11 @@ namespace CustomerManagementPL.Models
             return bl.getAllProductsTupleNameKey();
         }
 
+        public void CreatePdfForStoreRecomendations()
+        {
+            bl.CreatePdfForStoreRecomendations();
+        }
+
         public IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate()
         {
             return bl.groupByDate();
@@ -69,5 +75,6 @@ namespace CustomerManagementPL.Models
         {
             bl.RemoveItem(item.ItemId);
         }
+
     }
 }

@@ -25,6 +25,7 @@ namespace CustomerManagementPL
         private CatalogCategoryUserControl catalogBuy;
         private CatalogStatisticsUserControl catalogStat;
         private CategoryListUserControl categoriesUC;
+        private RecomendationsUserControl recommendationUC;
         public MainWindow()
         {
             InitializeComponent();
@@ -126,6 +127,27 @@ namespace CustomerManagementPL
                 catalogStat.SetValue(Grid.ColumnProperty, 1);
                 MainLayout.Children.Add(catalogStat);
             }
+        }
+
+        private void Recommended_Click(object sender, RoutedEventArgs e)
+        {
+            /* Clean all user controls and past those two which are revant */
+            //remove if exist
+            if (categoriesUC != null)
+                MainLayout.Children.Remove(categoriesUC);
+            //remove if exist
+            if (catalogBuy != null)
+                MainLayout.Children.Remove(catalogBuy);
+            //remove if exist
+            if (catalogStat != null)
+                MainLayout.Children.Remove(catalogStat);
+            /* Past new*/
+
+            recommendationUC = new RecomendationsUserControl();
+            recommendationUC.SetValue(Grid.RowProperty, 1);
+            recommendationUC.SetValue(Grid.ColumnProperty, 0);
+            recommendationUC.SetValue(Grid.ColumnSpanProperty, 2);
+            MainLayout.Children.Add(recommendationUC);
         }
     }
 }
