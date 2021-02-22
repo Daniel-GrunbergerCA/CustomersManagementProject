@@ -18,9 +18,8 @@ namespace CustomersManagementBL
         List<Item> getAllItems(Func<Item, bool> pred = null);
 
         IEnumerable<IGrouping<DateTime, Item>> GetDateGroups();
-        List<Tuple<string,string>> getAllProductsTupleNameKey();
-
         IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate();
 
+        List<Tuple<string, string>> getAllProductsTupleNameKey();
     }
 }

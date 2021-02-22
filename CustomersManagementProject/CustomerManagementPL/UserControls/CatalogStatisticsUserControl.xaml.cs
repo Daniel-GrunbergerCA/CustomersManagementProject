@@ -53,7 +53,8 @@ namespace CustomerManagementPL.UserControls
         BarChartUserControl barChartUC;
 
         public void LineChart_Click(object sender, RoutedEventArgs e)
-        {          
+        {
+            MainLayout.Children.Remove(lineChartUC);
             MainLayout.Children.Remove(barChartUC);
             /* Past new*/
             lineChartUC.SetValue(Grid.RowProperty, 2);
@@ -64,6 +65,7 @@ namespace CustomerManagementPL.UserControls
         public void BarChart_Click(object sender, RoutedEventArgs e)
         {
             MainLayout.Children.Remove(lineChartUC);
+            MainLayout.Children.Remove(barChartUC);
             /* Past new*/
             barChartUC.SetValue(Grid.RowProperty, 2);
             barChartUC.SetValue(Grid.ColumnProperty, 0);

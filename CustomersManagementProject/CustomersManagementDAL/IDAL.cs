@@ -23,8 +23,7 @@ namespace CustomersManagementDAL
         // just a check
         IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate();
 
-
-
+        List<Tuple<string, string>> getAllProductsTupleNameKey();
 
     }
 }

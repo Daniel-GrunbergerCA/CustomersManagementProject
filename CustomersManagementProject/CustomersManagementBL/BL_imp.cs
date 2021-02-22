@@ -37,18 +37,11 @@ namespace CustomersManagementBL
             return idal.groupByDate();
         }
 
+
         public List<Tuple<string, string>> getAllProductsTupleNameKey()
         {
-            List<Tuple<string,string>> productsNameKey = new List<Tuple<string,string>>();
-            foreach (var group in idal.getGroupBySerialKey())
-            {
-                productsNameKey.Add(new Tuple<string,string>(group.Key,group.First().ItemName));
-            }
-            return productsNameKey;
+            return idal.getAllProductsTupleNameKey();
         }
-
-
-
 
 
         public void RemoveItem(int itemId)
@@ -60,8 +53,6 @@ namespace CustomersManagementBL
         {
             idal.UpdateItem(item);
         }
-
-        
 
     }
 }

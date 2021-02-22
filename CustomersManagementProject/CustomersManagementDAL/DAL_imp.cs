@@ -62,23 +62,19 @@ namespace CustomersManagementDAL
                 var grpItms = from itm in ctx.Items
                               group itm by itm.SerialKey into grpItm
                               select grpItm;
-                return grpItms;
+                return grpItms.ToList();
             }
         }
 
-        //public IEnumerable<IGrouping<DateTime, IGrouping<string, Item>>> foo()
-        //{
-        //    var queryGroup = getGroupByDate();
-        //    using (var ctx = new CustomerContext())
-        //    {
-        //        var r1 = getGroupBySerialKey();
-        //        return from itm in r1
-        //                 from itm2 in ctx.Items
-        //                 group itm by itm2.Date_of_purchase into r3
-        //                 select r3;
-
-        //    }
-        //}
+        public List<Tuple<string, string>> getAllProductsTupleNameKey()
+        {
+            List<Tuple<string, string>> list = new List<Tuple<string, string>>();
+            foreach (var grpItm in getGroupBySerialKey())
+            {
+                list.Add(new Tuple<string, string>(grpItm.Key, grpItm.First().ItemName));
+            }
+            return list;
+        }
 
 
         public IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate()
@@ -93,23 +89,6 @@ namespace CustomersManagementDAL
                        from itm2 in ctx.Items
                        where itm.Key == itm2.Date_of_purchase
                        group itm by itm2.SerialKey into r3
-                       select r3;
-            }
-        }
-
-
-        public IEnumerable<IGrouping<DateTime, IGrouping<string, Item>>> groupByKeyDays()
-        {
-            var queryGroup = getGroupByDate();
-            using (var ctx = new CustomerContext())
-            {
-                var r1 = from itm in ctx.Items
-                         group itm by itm.SerialKey into r2
-                         select r2;
-                return from itm in r1
-                       from itm2 in ctx.Items
-                       where itm.Key == itm2.SerialKey
-                       group itm by itm2.Date_of_purchase into r3
                        select r3;
             }
         }
