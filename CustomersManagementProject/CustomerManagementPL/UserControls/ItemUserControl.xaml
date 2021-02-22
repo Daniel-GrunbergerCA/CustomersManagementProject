@@ -28,9 +28,9 @@
             <TextBlock Text="{Binding Product.ItemName}" FontWeight="Bold" FontSize="18"  />
             <TextBlock Text="{Binding Product.Date_of_purchase, StringFormat=d}" FontSize="14"  />
             <TextBlock Text="{Binding Product.Quantity, StringFormat='Quantity: {0}'}" FontWeight="Bold" FontSize="13"  />
-            <TextBlock Text="{Binding Product.Store_name, StringFormat='From store: {0}'}"  FontSize="13"  />
-            <TextBlock Text="{Binding Product.Store_location, StringFormat='Store Location: {0}'}"  FontSize="13" />
-            <TextBlock Padding="0 5 0 0" Text="Description:" TextDecorations="Underline" />
+            <TextBlock Text="{Binding Product.Store_name, StringFormat='Store: {0}'}"  FontSize="13"   />
+            <TextBlock Text="{Binding Product.Store_location, StringFormat='Location: {0}'}"   />
+            <TextBlock Padding="0 5 0 0" Text="Description:" TextDecorations="Underline" Foreground="ForestGreen"/>
             <TextBox Text="{Binding Description}"  FontSize="12"/>
             <materialDesign:RatingBar
   x:Name="BasicRatingBar"
@@ -48,7 +48,7 @@
             <materialDesign:PackIcon HorizontalAlignment="Center"  MinHeight="30" MinWidth="30" Kind="CloseCircleOutline"/>
         </Button>
         <StackPanel Grid.Column="2" Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <TextBlock Text="Price:" FontWeight="Bold" FontSize="14" />
+            <TextBlock Text="Price:" FontWeight="Bold" FontSize="14" Foreground="ForestGreen" />
             <TextBlock Text="{Binding Product.Price, StringFormat=' {0}$'}"  FontWeight="Bold" FontSize="18"/>
         </StackPanel>
         <Button x:Name="applyButton" Command="{Binding UpdateProduct}" Margin="5 5 5 5" MaxWidth="100" Content="APPLY" Grid.Column="2" Grid.Row="1"  VerticalAlignment="Bottom"  Background="#FFEEAB50"  BorderBrush="#FFE7A518" />
