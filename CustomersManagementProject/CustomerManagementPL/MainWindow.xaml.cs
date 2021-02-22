@@ -32,6 +32,8 @@ namespace CustomerManagementPL
             mViewModel = new ViewModel(this);
             this.DataContext = mViewModel;
             mViewModel.Init();
+            //categoriesUC = new CategoryListUserControl(PRODUCT_CATEGORIES);
+
         }
 
         // [___]  [   ]  [   ]
@@ -47,6 +49,9 @@ namespace CustomerManagementPL
             //remove if exist
             if (catalogStat != null)
                 MainLayout.Children.Remove(catalogStat);
+            //remove if exist
+            if (recommendationUC != null)
+                MainLayout.Children.Remove(recommendationUC);
             /* Past new*/
             categoriesUC = new CategoryListUserControl(PRODUCT_CATEGORIES);
             categoriesUC.SetValue(Grid.RowProperty, 1);
@@ -66,6 +71,9 @@ namespace CustomerManagementPL
             //remove if exist
             if (catalogStat != null)
                 MainLayout.Children.Remove(catalogStat);
+            //remove if exist
+            if (recommendationUC != null)
+                MainLayout.Children.Remove(recommendationUC);
             /* Past new*/
             categoriesUC = new CategoryListUserControl(PRODUCT_STATISTICS);
             categoriesUC.SetValue(Grid.RowProperty, 1);
@@ -129,7 +137,7 @@ namespace CustomerManagementPL
             }
         }
 
-        private void Recommended_Click(object sender, RoutedEventArgs e)
+        private void onRecommendedButton_Click(object sender, RoutedEventArgs e)
         {
             /* Clean all user controls and past those two which are revant */
             //remove if exist
@@ -141,11 +149,13 @@ namespace CustomerManagementPL
             //remove if exist
             if (catalogStat != null)
                 MainLayout.Children.Remove(catalogStat);
+            //remove if exist
+            if (recommendationUC != null)
+                MainLayout.Children.Remove(recommendationUC);
             /* Past new*/
 
             recommendationUC = new RecomendationsUserControl();
             recommendationUC.SetValue(Grid.RowProperty, 1);
-            recommendationUC.SetValue(Grid.ColumnProperty, 0);
             recommendationUC.SetValue(Grid.ColumnSpanProperty, 2);
             MainLayout.Children.Add(recommendationUC);
         }

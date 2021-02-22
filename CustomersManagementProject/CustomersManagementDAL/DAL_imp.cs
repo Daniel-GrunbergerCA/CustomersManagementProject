@@ -13,12 +13,10 @@ namespace CustomersManagementDAL
     public class DAL_imp : IDAL
     {
 
-        private GoogleDriveAPIManager googleDriveAPI_manager;
 
         public DAL_imp()
         {
-            googleDriveAPI_manager = new GoogleDriveAPIManager(this);
-            googleDriveAPI_manager.QuickStart();
+
         }
 
         public void AddItem(Item item)
@@ -66,15 +64,7 @@ namespace CustomersManagementDAL
             }
         }
 
-        public List<Tuple<string, string>> getAllProductsTupleNameKey()
-        {
-            List<Tuple<string, string>> list = new List<Tuple<string, string>>();
-            foreach (var grpItm in getGroupBySerialKey())
-            {
-                list.Add(new Tuple<string, string>(grpItm.Key, grpItm.First().ItemName));
-            }
-            return list;
-        }
+
 
 
         public IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate()

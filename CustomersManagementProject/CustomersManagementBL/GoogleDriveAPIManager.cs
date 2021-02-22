@@ -1,4 +1,5 @@
-﻿using CustomersManagementDP;
+﻿using CustomersManagementBL;
+using CustomersManagementDP;
 using Google.Apis.Auth.OAuth2;
 using Google.Apis.Drive.v3;
 using Google.Apis.Services;
@@ -12,17 +13,17 @@ using System.IO;
 using System.Threading;
 using ZXing;
 
-namespace CustomersManagementDAL
+namespace CustomersManagementBL
 {
     public class GoogleDriveAPIManager
     {
 
-        public GoogleDriveAPIManager(IDAL idal)
+        public GoogleDriveAPIManager(IBL bl)
         {
-            this.idal = idal;
+            this.ibl = bl;
         }
 
-        IDAL idal;
+        IBL ibl;
         // permission level: read, edit and delete the files in the Google drive:
         static string[] Scopes = { @"https://www.googleapis.com/auth/drive" };
         public void QuickStart()
@@ -163,7 +164,7 @@ namespace CustomersManagementDAL
                 var result = reader.Decode((Bitmap)res);
                 if (result != null)
                 {
-                    idal.AddItem(CreateItem(result.ToString(), file.CreatedTime));
+                    ibl.AddItem(CreateItem(result.ToString(), file.CreatedTime));
                 }
                 else
                     Console.WriteLine("failed to scan");

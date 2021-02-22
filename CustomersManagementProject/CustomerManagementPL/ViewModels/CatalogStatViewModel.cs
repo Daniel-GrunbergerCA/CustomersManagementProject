@@ -295,7 +295,7 @@ namespace CustomerManagementPL.ViewModels
         public int StepSeperator { get; set; }
 
 
-
+        private const int DEFAULT_SEPERATE_VALUE = 10;
 
 
 
@@ -632,7 +632,7 @@ namespace CustomerManagementPL.ViewModels
         {
             Count = Count == 0 ? 1 : Count;
             StepSeperator = maxValue / Count;
-            StepSeperator = StepSeperator == 0 ? 10 : StepSeperator;
+            StepSeperator = StepSeperator == 0 ? DEFAULT_SEPERATE_VALUE : StepSeperator;
             if (null != PropertyChanged)
             {
                 PropertyChanged(this, new PropertyChangedEventArgs("StepSeperator"));

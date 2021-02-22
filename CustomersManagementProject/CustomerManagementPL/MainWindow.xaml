@@ -23,7 +23,7 @@
             <StackPanel Grid.Row="0"  Orientation="Horizontal" >
                 <Button x:Name="Categories" Content="My Categories" Click="onCategoriesButton_Click" Margin="14 4 4 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
                 <Button x:Name="Statistics" Content="My Statistics" Click="onStatisticsButton_Click" Margin="4 4 4 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
-                <Button x:Name="Recommended" Content="My Recommended" Margin="4 4 4 4" Background="#FFBC5757" BorderBrush="#FFBC5757" Click="Recommended_Click"></Button>
+                <Button x:Name="Recommended" Content="My Recommended" Click="onRecommendedButton_Click" Margin="4 4 4 4" Background="#FFBC5757" BorderBrush="#FFBC5757" ></Button>
             </StackPanel>
         </Border>
 
