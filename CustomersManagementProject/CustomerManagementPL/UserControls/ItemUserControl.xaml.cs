@@ -23,9 +23,9 @@ namespace CustomerManagementPL.UserControls
         public ItemUserControl()
         {
             InitializeComponent();
+       
         }
 
-
-
+       
     }
 }
