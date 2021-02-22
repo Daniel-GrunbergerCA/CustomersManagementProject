@@ -591,7 +591,7 @@ namespace CustomerManagementPL.ViewModels
             List<int> costsInt = new List<int>();
             foreach(var cost in costs)
             {
-                costsInt.Add((int)cost.Value/1000);
+                costsInt.Add((int)cost.Value);
             }
 
             SeriesLineCollection.Add(new LineSeries
@@ -609,7 +609,7 @@ namespace CustomerManagementPL.ViewModels
             double maxValue = 0;
             for(int i = 0; i< costs.Count; ++i)
             {
-                double num = costs[i];
+                double num = costsInt[i];
                 if (maxValue < num)
                     maxValue = num;
             }
