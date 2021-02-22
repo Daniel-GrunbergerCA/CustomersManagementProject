@@ -55,6 +55,7 @@ namespace CustomerManagementPL.ViewModels
             selectedWeek = -1;
             monthSelected = false;
             SelectedIndexYear = 8;
+
         }
 
         private int selectedYear;
@@ -241,16 +242,17 @@ namespace CustomerManagementPL.ViewModels
                     Values = new ChartValues<int>(itemKeys[item.Key])
                 });
             }
-            if(statistics == Enums.STAT.Products)
+            AxisYTitle = "Quantity";
+            YFormatter = value => value.ToString("N0");
+            int maxValue = 0;
+            foreach(var item in itemKeys)
             {
-                AxisYTitle = "Quantity";
-                YFormatter = value => value.ToString("N0");
-            } 
-            else
-            {
-                AxisYTitle = "Cost";
-                YFormatter = value => value.ToString("C");
+                int num = unsigned_max(itemKeys[item.Key]);
+                if (maxValue < num)
+                    maxValue = num;
             }
+
+            setStepSeperator(maxValue, itemKeys.Count);
 
             // Notify The binded labels in the view
             if (null != PropertyChanged)
@@ -263,11 +265,34 @@ namespace CustomerManagementPL.ViewModels
             }
         }
         
+        int unsigned_max(int[] arr)
+        {
+            int maxNum = 0;
+            foreach(var num in arr)
+            {
+                if (maxNum < num)
+                    maxNum = num;
+            }
+            return maxNum;
+        }
+
+        double unsigned_max(double[] arr)
+        {
+            double maxNum = 0;
+            foreach (var num in arr)
+            {
+                if (maxNum < num)
+                    maxNum = num;
+            }
+            return maxNum;
+        }
+
         public SeriesCollection SeriesLineCollection { get; set; }
         public SeriesCollection SeriesBarCollection { get; set; }
         public List<string> Labels { get; set; }
         public Func<double, string> YFormatter { get; set; }
 
+        public int StepSeperator { get; set; }
 
 
 
@@ -363,6 +388,15 @@ namespace CustomerManagementPL.ViewModels
             }
             AxisYTitle = "Quantity";
             YFormatter = value => value.ToString("N0");
+            int maxValue = 0;
+            foreach (var store in storeNames)
+            {
+                int num = unsigned_max(storeNames[store.Key]);
+                if (maxValue < num)
+                    maxValue = num;
+            }
+
+            setStepSeperator(maxValue, storeNames.Count);
 
             // Notify The binded labels in the view
             if (null != PropertyChanged)
@@ -473,6 +507,16 @@ namespace CustomerManagementPL.ViewModels
             }
             AxisYTitle = "Quantity";
             YFormatter = value => value.ToString("N0");
+            int maxValue = 0;
+            foreach (var category in categories)
+            {
+                int num = unsigned_max(categories[category.Key]);
+                if (maxValue < num)
+                    maxValue = num;
+            }
+
+            setStepSeperator(maxValue, categories.Count);
+            
             // Notify The binded labels in the view
             if (null != PropertyChanged)
             {
@@ -561,7 +605,17 @@ namespace CustomerManagementPL.ViewModels
                 Values = new ChartValues<int>(costsInt)
             });
             AxisYTitle = "Cost";
-            YFormatter = value => value + "K$";
+            YFormatter = value => value.ToString("C");
+            double maxValue = 0;
+            for(int i = 0; i< costs.Count; ++i)
+            {
+                double num = costs[i];
+                if (maxValue < num)
+                    maxValue = num;
+            }
+
+            setStepSeperator((int)maxValue, costs.Count);
+
             // Notify The binded labels in the view
             if (null != PropertyChanged)
             {
@@ -570,6 +624,18 @@ namespace CustomerManagementPL.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs("YFormatter"));
                 PropertyChanged(this, new PropertyChangedEventArgs("Labels"));
                 PropertyChanged(this, new PropertyChangedEventArgs("AxisYTitle"));
+            }
+        }
+
+
+        void setStepSeperator(int maxValue, int Count)
+        {
+            Count = Count == 0 ? 1 : Count;
+            StepSeperator = maxValue / Count;
+            StepSeperator = StepSeperator == 0 ? 10 : StepSeperator;
+            if (null != PropertyChanged)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("StepSeperator"));
             }
         }
     }
