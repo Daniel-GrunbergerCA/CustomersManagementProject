@@ -54,7 +54,7 @@ namespace CustomerManagementPL.ViewModels
             selectedMonth = -1;
             selectedWeek = -1;
             monthSelected = false;
-            SelectedIndexYear = 0;
+            SelectedIndexYear = 8;
         }
 
         private int selectedYear;

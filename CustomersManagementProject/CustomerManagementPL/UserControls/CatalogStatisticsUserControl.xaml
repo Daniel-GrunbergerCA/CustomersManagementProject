@@ -25,7 +25,7 @@
                 </StackPanel>
             </materialDesign:ColorZone>
 
-            <ComboBox x:Name="YearComboBox" SelectedIndex="{Binding SelectedIndexYear}" ItemsSource="{Binding AggregationYear}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5,0,10,2" Height="45" Width="130" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Year" >
+            <ComboBox x:Name="YearComboBox"  SelectedIndex="{Binding SelectedIndexYear}" ItemsSource="{Binding AggregationYear}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="5,0,10,2" Height="45" Width="130" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Year" >
             </ComboBox>
             <ComboBox x:Name="MonthComboBox" SelectedIndex="{Binding SelectedIndexMonth}" materialDesign:TextFieldAssist.HasClearButton="True" ItemsSource="{Binding AggregationMonth}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="2,0,10,2" Height="45" Width="130" Style="{StaticResource MaterialDesignFilledComboBox}" materialDesign:HintAssist.Hint="Month" >
             </ComboBox>

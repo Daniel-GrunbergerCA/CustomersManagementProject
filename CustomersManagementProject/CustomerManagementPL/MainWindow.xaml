@@ -20,7 +20,7 @@
     <Grid  x:Name="MainLayout" UserControls:CategoryListUserControl.CatalogSwitch="onCatalog_Click">
         <!-- top menu -->
         <Border Grid.Row="0" Grid.Column="0" Background="#FFF6F4EF" Margin="5" CornerRadius="10" Grid.ColumnSpan="2" >
-            <StackPanel Grid.Row="0"  Orientation="Horizontal">
+            <StackPanel Grid.Row="0"  Orientation="Horizontal" >
                 <Button x:Name="Categories" Content="My Categories" Click="onCategoriesButton_Click" Margin="14 4 4 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
                 <Button x:Name="Statistics" Content="My Statistics" Click="onStatisticsButton_Click" Margin="4 4 4 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
                 <Button x:Name="Recommended" Content="My Recommended" Margin="4 4 4 4" Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
