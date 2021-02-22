@@ -64,10 +64,7 @@ namespace CustomerManagementPL.ViewModels
             set
             {
                 selectedYear = value;
-                if (statistics == Enums.STAT.Products)
-                    RefreshChart();
-                else
-                    RefreshStoreChart();
+                RefreshChart();
                 if (null != PropertyChanged)
                     PropertyChanged(this, new PropertyChangedEventArgs("YearComboBox"));
             }
@@ -89,10 +86,7 @@ namespace CustomerManagementPL.ViewModels
                 {
                     MonthIsSelected = true;
                 }
-                if (statistics == Enums.STAT.Products)
-                    RefreshChart();
-                else
-                    RefreshStoreChart();
+                RefreshChart();
                 if (null != PropertyChanged)
                     PropertyChanged(this, new PropertyChangedEventArgs("SelectedIndexMonth"));
             }
@@ -105,10 +99,7 @@ namespace CustomerManagementPL.ViewModels
             set
             {
                 selectedWeek= value;
-                if (statistics == Enums.STAT.Products)
-                    RefreshChart();
-                else
-                    RefreshStoreChart();
+                RefreshChart();
                 if (null != PropertyChanged)
                     PropertyChanged(this, new PropertyChangedEventArgs("SelectedIndexWeek"));
             }
@@ -121,10 +112,7 @@ namespace CustomerManagementPL.ViewModels
             set
             {
                 monthSelected = value;
-                if (statistics == Enums.STAT.Products)
-                    RefreshChart();
-                else
-                    RefreshStoreChart();
+                RefreshChart();
                 if (null != PropertyChanged)
                     PropertyChanged(this, new PropertyChangedEventArgs("MonthIsSelected"));
             }
@@ -148,7 +136,7 @@ namespace CustomerManagementPL.ViewModels
         Dictionary<string, int[]> itemKeys = new Dictionary<string, int[]> { };
         Dictionary<string, string> itemNames = new Dictionary<string, string>{ };
 
-        public void aggregateDay()
+        public void aggregateProductDay()
         {
             itemKeys.Clear();
             foreach (Item item in itemsModel.GetWeekItems(1 + selectedWeek, 1 + selectedMonth, DateTime.Now.Year - selectedYear)) //selectedWeek + 1, selectedMonth + 1, selectedYear + 1
@@ -164,7 +152,7 @@ namespace CustomerManagementPL.ViewModels
                 }
             }
         }
-        public void aggregateWeek()
+        public void aggregateProductWeek()
         {
             itemKeys.Clear();
             foreach (Item item in itemsModel.GetMonthItems(1 + selectedMonth, DateTime.Now.Year - selectedYear))
@@ -180,7 +168,7 @@ namespace CustomerManagementPL.ViewModels
                 }
             }
         }
-        public void aggregateMonth()
+        public void aggregateProductMonth()
         {
             itemKeys.Clear();
             foreach (Item item in itemsModel.GetYearItems(DateTime.Now.Year-selectedYear))
@@ -199,24 +187,41 @@ namespace CustomerManagementPL.ViewModels
 
 
 
-
-
-
         public void RefreshChart()
+        {
+            switch(statistics)
+            {
+                case Enums.STAT.Products:
+                    RefreshProductChart();
+                    break;
+                case Enums.STAT.Stores:
+                    RefreshStoreChart();
+                    break;
+                case Enums.STAT.Categories:
+                    RefreshCategoryChart();
+                    break;
+                case Enums.STAT.Costs:
+                    RefreshCostChart();
+                    break;
+            }
+        }
+
+
+        public void RefreshProductChart()
         {
             if (selectedMonth == -1)
             { // per month
-                aggregateMonth();
+                aggregateProductMonth();
                 Labels = AggregationMonth;
             }
             else if(selectedWeek == -1)
             { // per week
-                aggregateWeek();
+                aggregateProductWeek();
                 Labels = AggregationWeek;
             }
             else
             { // per day
-                aggregateDay();
+                aggregateProductDay();
                 Labels = AggregationDay;
             }
             SeriesLineCollection = new SeriesCollection();
@@ -271,11 +276,7 @@ namespace CustomerManagementPL.ViewModels
 
 
 
-        public SeriesCollection SeriessssCollection { get; set; }
-        public SeriesCollection SeriesbbbCollection { get; set; }
-
-
-        Dictionary<string, double[]> storeNames = new Dictionary<string, double[]> { };
+        Dictionary<string, int[]> storeNames = new Dictionary<string, int[]> { };
 
         public void aggregateStoreDay()
         {
@@ -284,12 +285,12 @@ namespace CustomerManagementPL.ViewModels
             {
                 if (storeNames.ContainsKey(item.Store_name))
                 {
-                    storeNames[item.Store_name][(item.Date_of_purchase.Day) % AggregationDay.Count()] += item.Price;
+                    storeNames[item.Store_name][(item.Date_of_purchase.Day) % AggregationDay.Count()] += item.Quantity;
                 }
                 else
                 {
-                    storeNames.Add(item.Store_name, new double[AggregationDay.Count()]);
-                    storeNames[item.Store_name][(item.Date_of_purchase.Day) % AggregationDay.Count()] = item.Price;
+                    storeNames.Add(item.Store_name, new int[AggregationDay.Count()]);
+                    storeNames[item.Store_name][(item.Date_of_purchase.Day) % AggregationDay.Count()] = item.Quantity;
                 }
             }
         }
@@ -300,12 +301,12 @@ namespace CustomerManagementPL.ViewModels
             {
                 if (storeNames.ContainsKey(item.Store_name))
                 {
-                    storeNames[item.Store_name][(item.Date_of_purchase.Day) / AggregationDay.Count()] += item.Price;
+                    storeNames[item.Store_name][(item.Date_of_purchase.Day) / AggregationDay.Count()] += item.Quantity;
                 }
                 else
                 {
-                    storeNames.Add(item.Store_name, new double[AggregationWeek.Count()]);
-                    storeNames[item.Store_name][(item.Date_of_purchase.Day) / AggregationDay.Count()] = item.Price;
+                    storeNames.Add(item.Store_name, new int[AggregationWeek.Count()]);
+                    storeNames[item.Store_name][(item.Date_of_purchase.Day) / AggregationDay.Count()] = item.Quantity;
                 }
             }
         }
@@ -316,12 +317,12 @@ namespace CustomerManagementPL.ViewModels
             {
                 if (storeNames.ContainsKey(item.Store_name))
                 {
-                    storeNames[item.Store_name][item.Date_of_purchase.Month - 1] += item.Price;
+                    storeNames[item.Store_name][item.Date_of_purchase.Month - 1] += item.Quantity;
                 }
                 else
                 {
-                    storeNames.Add(item.Store_name, new double[AggregationMonth.Count()]);
-                    storeNames[item.Store_name][item.Date_of_purchase.Month - 1] = item.Price;
+                    storeNames.Add(item.Store_name, new int[AggregationMonth.Count()]);
+                    storeNames[item.Store_name][item.Date_of_purchase.Month - 1] = item.Quantity;
                 }
             }
         }
@@ -353,15 +354,15 @@ namespace CustomerManagementPL.ViewModels
             {
                 SeriesLineCollection.Add(new LineSeries
                 {
-                    Title = store.Key, Values = new ChartValues<double>(storeNames[store.Key])
+                    Title = store.Key, Values = new ChartValues<int>(storeNames[store.Key])
                 });
                 SeriesBarCollection.Add(new ColumnSeries
                 {
-                    Title = store.Key, Values = new ChartValues<double>(storeNames[store.Key].ToList())
+                    Title = store.Key, Values = new ChartValues<int>(storeNames[store.Key].ToList())
                 });
             }
-            AxisYTitle = "Cost";
-            YFormatter = value => value.ToString("C");
+            AxisYTitle = "Quantity";
+            YFormatter = value => value.ToString("N0");
 
             // Notify The binded labels in the view
             if (null != PropertyChanged)
@@ -382,7 +383,7 @@ namespace CustomerManagementPL.ViewModels
 
 
 
-        Dictionary<Enums.TYPE, double[]> categories = new Dictionary<Enums.TYPE, double[]> { };
+        Dictionary<Enums.TYPE, int[]> categories = new Dictionary<Enums.TYPE, int[]> { };
         public void aggregateCategoryDay()
         {
             categories.Clear();
@@ -390,12 +391,12 @@ namespace CustomerManagementPL.ViewModels
             {
                 if (categories.ContainsKey(item.Categorie))
                 {
-                    categories[item.Categorie][(item.Date_of_purchase.Day) % AggregationDay.Count()] += item.Price;
+                    categories[item.Categorie][(item.Date_of_purchase.Day) % AggregationDay.Count()] += item.Quantity;
                 }
                 else
                 {
-                    categories.Add(item.Categorie, new double[AggregationDay.Count()]);
-                    categories[item.Categorie][(item.Date_of_purchase.Day) % AggregationDay.Count()] = item.Price;
+                    categories.Add(item.Categorie, new int[AggregationDay.Count()]);
+                    categories[item.Categorie][(item.Date_of_purchase.Day) % AggregationDay.Count()] = item.Quantity;
                 }
             }
         }
@@ -406,12 +407,12 @@ namespace CustomerManagementPL.ViewModels
             {
                 if (categories.ContainsKey(item.Categorie))
                 {
-                    categories[item.Categorie][(item.Date_of_purchase.Day) / AggregationDay.Count()] += item.Price;
+                    categories[item.Categorie][(item.Date_of_purchase.Day) / AggregationDay.Count()] += item.Quantity;
                 }
                 else
                 {
-                    categories.Add(item.Categorie, new double[AggregationWeek.Count()]);
-                    categories[item.Categorie][(item.Date_of_purchase.Day) / AggregationDay.Count()] = item.Price;
+                    categories.Add(item.Categorie, new int[AggregationWeek.Count()]);
+                    categories[item.Categorie][(item.Date_of_purchase.Day) / AggregationDay.Count()] = item.Quantity;
                 }
             }
         }
@@ -422,18 +423,155 @@ namespace CustomerManagementPL.ViewModels
             {
                 if (categories.ContainsKey(item.Categorie))
                 {   
-                    categories[item.Categorie][item.Date_of_purchase.Month - 1] += item.Price;
+                    categories[item.Categorie][item.Date_of_purchase.Month - 1] += item.Quantity;
                 }   
                 else
                 {   
-                    categories.Add(item.Categorie, new double[AggregationMonth.Count()]);
-                    categories[item.Categorie][item.Date_of_purchase.Month - 1] = item.Price;
+                    categories.Add(item.Categorie, new int[AggregationMonth.Count()]);
+                    categories[item.Categorie][item.Date_of_purchase.Month - 1] = item.Quantity;
                 }
             }
         }
 
 
 
+
+
+        public void RefreshCategoryChart()
+        {
+            if (selectedMonth == -1)
+            { // per month
+                aggregateCategoryMonth();
+                Labels = AggregationMonth;
+            }
+            else if (selectedWeek == -1)
+            { // per week
+                aggregateCategoryWeek();
+                Labels = AggregationWeek;
+            }
+            else
+            { // per day
+                aggregateCategoryDay();
+                Labels = AggregationDay;
+            }
+            SeriesLineCollection = new SeriesCollection();
+            SeriesBarCollection = new SeriesCollection();
+            // Remake the Two Charts
+
+            foreach (var category in categories)
+            {
+                SeriesLineCollection.Add(new LineSeries
+                {
+                    Title = category.Key.ToString(),
+                    Values = new ChartValues<int>(categories[category.Key])
+                });
+                SeriesBarCollection.Add(new ColumnSeries
+                {
+                    Title = category.Key.ToString(),
+                    Values = new ChartValues<int>(categories[category.Key])
+                });
+            }
+            AxisYTitle = "Quantity";
+            YFormatter = value => value.ToString("N0");
+            // Notify The binded labels in the view
+            if (null != PropertyChanged)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("SeriesLineCollection"));
+                PropertyChanged(this, new PropertyChangedEventArgs("SeriesBarCollection"));
+                PropertyChanged(this, new PropertyChangedEventArgs("YFormatter"));
+                PropertyChanged(this, new PropertyChangedEventArgs("Labels"));
+                PropertyChanged(this, new PropertyChangedEventArgs("AxisYTitle"));
+            }
+        }
+
+
+
+        Dictionary<int, double> costs = new Dictionary<int, double>();
+        public void aggregateCostDay()
+        {
+            costs.Clear();
+            foreach (Item item in itemsModel.GetWeekItems(1 + selectedWeek, 1 + selectedMonth, DateTime.Now.Year - selectedYear))
+            {
+                if (!costs.ContainsKey((item.Date_of_purchase.Day) % AggregationDay.Count()))
+                {
+                    costs.Add((item.Date_of_purchase.Day) % AggregationDay.Count(), 0);
+                }
+                costs[(item.Date_of_purchase.Day) % AggregationDay.Count()] += item.Price;
+            }
+        }
+        public void aggregateCostWeek()
+        {
+            costs.Clear();
+            foreach (Item item in itemsModel.GetMonthItems(1 + selectedMonth, DateTime.Now.Year - selectedYear))
+            {
+                if(!costs.ContainsKey((item.Date_of_purchase.Day) / AggregationDay.Count()))
+                {
+                    costs.Add((item.Date_of_purchase.Day) / AggregationDay.Count(), 0);
+                }
+                costs[(item.Date_of_purchase.Day) / AggregationDay.Count()] += item.Price;
+            }
+        }
+        public void aggregateCostMonth()
+        {
+            costs.Clear();
+            foreach (Item item in itemsModel.GetYearItems(DateTime.Now.Year - selectedYear))
+            {
+                if (!costs.ContainsKey(item.Date_of_purchase.Month - 1))
+                {
+                    costs.Add(item.Date_of_purchase.Month - 1, 0);
+                }
+                costs[item.Date_of_purchase.Month - 1] += item.Price;
+            }
+        }
+
+        public void RefreshCostChart()
+        {
+            if (selectedMonth == -1)
+            { // per month
+                aggregateCostMonth();
+                Labels = AggregationMonth;
+            }
+            else if (selectedWeek == -1)
+            { // per week
+                aggregateCostWeek();
+                Labels = AggregationWeek;
+            }
+            else
+            { // per day
+                aggregateCostDay();
+                Labels = AggregationDay;
+            }
+            SeriesLineCollection = new SeriesCollection();
+            SeriesBarCollection = new SeriesCollection();
+            // Remake the Two Charts
+            List<int> costsInt = new List<int>();
+            foreach(var cost in costs)
+            {
+                costsInt.Add((int)cost.Value/1000);
+            }
+
+            SeriesLineCollection.Add(new LineSeries
+            {
+                Title = "Your Costs",
+                Values = new ChartValues<int>(costsInt)
+            }) ;
+            SeriesBarCollection.Add(new ColumnSeries
+            {
+                Title = "Your Costs",
+                Values = new ChartValues<int>(costsInt)
+            });
+            AxisYTitle = "Cost";
+            YFormatter = value => value + "K$";
+            // Notify The binded labels in the view
+            if (null != PropertyChanged)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs("SeriesLineCollection"));
+                PropertyChanged(this, new PropertyChangedEventArgs("SeriesBarCollection"));
+                PropertyChanged(this, new PropertyChangedEventArgs("YFormatter"));
+                PropertyChanged(this, new PropertyChangedEventArgs("Labels"));
+                PropertyChanged(this, new PropertyChangedEventArgs("AxisYTitle"));
+            }
+        }
     }
 
     
