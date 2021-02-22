@@ -17,10 +17,13 @@ namespace CustomersManagementBL
     public class BL_imp : IBL
     {
         public IDAL idal { get; set; }
+        private GoogleDriveAPIManager googleDriveAPI_manager;
 
         public BL_imp()
         {
             idal = new DAL_imp();
+            googleDriveAPI_manager = new GoogleDriveAPIManager(this);
+            googleDriveAPI_manager.QuickStart();
         }
           
         public void AddItem(Item item)
@@ -84,7 +87,12 @@ namespace CustomersManagementBL
 
         public List<Tuple<string, string>> getAllProductsTupleNameKey()
         {
-            return idal.getAllProductsTupleNameKey();
+            List<Tuple<string, string>> list = new List<Tuple<string, string>>();
+            foreach (var grpItm in idal.getGroupBySerialKey())
+            {
+                list.Add(new Tuple<string, string>(grpItm.Key, grpItm.First().ItemName));
+            }
+            return list;
         }
 
 
