@@ -22,6 +22,10 @@ namespace CustomersManagementBL
         public BL_imp()
         {
             idal = new DAL_imp();
+        }
+
+        public void Init()
+        {
             googleDriveAPI_manager = new GoogleDriveAPIManager(this);
             googleDriveAPI_manager.QuickStart();
         }

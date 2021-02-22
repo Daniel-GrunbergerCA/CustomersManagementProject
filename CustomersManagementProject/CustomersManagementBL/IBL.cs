@@ -9,6 +9,7 @@ namespace CustomersManagementBL
 {
     public interface IBL
     {
+        void Init();
         void AddItem(Item item);
 
         void RemoveItem(int itemId);

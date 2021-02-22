@@ -18,7 +18,7 @@ namespace CustomerManagementPL.Models
 
         public void Init()
         {
-            //bl.AddItem(new Item(2, "Tomato", DateTime.Now, "Haifa", "Almost Free", 1, Enums.TYPE.Food, "its the fdfsdf.", "azsddsa3"));
+            bl.Init();
         }
 
         public List<Item> GetItems(Enums.TYPE category)
