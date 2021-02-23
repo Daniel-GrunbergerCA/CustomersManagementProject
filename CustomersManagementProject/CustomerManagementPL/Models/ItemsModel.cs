@@ -26,6 +26,10 @@ namespace CustomerManagementPL.Models
             return bl.getAllItems(x => x.Categorie == category);
         }
 
+        public List<Item> GetRecommendationsForToday()
+        {
+            return bl.getRecommendationsForToday();
+        }
         public List<Item> GetYearItems(int year)
         {
             return bl.getAllItems(x => x.Date_of_purchase.Year == year);

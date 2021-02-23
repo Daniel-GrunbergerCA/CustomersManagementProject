@@ -16,7 +16,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         MinWidth="{Binding WindowMinimumWidth}"
         MinHeight="{Binding WindowMinimumHeight}"
-        Title="MainWindow" Height="550" Width="900">
+        Title="MainWindow" Height="900" Width="1500" WindowStartupLocation="CenterScreen">
     <Grid  x:Name="MainLayout" UserControls:CategoryListUserControl.CatalogSwitch="onCatalog_Click">
         <!-- top menu -->
 

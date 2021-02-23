@@ -43,6 +43,43 @@ namespace CustomersManagementBL
                               select item.Store_name).Distinct().ToList();
         }
 
+        public List<Item> getRecommendationsForToday()
+        {
+            /*DayOfWeek today = DateTime.Now.DayOfWeek;
+            List<Item> itemsRecommended = new List<Item>();
+            List<Tuple<string, string>> tuples = getAllProductsTupleNameKey();
+            List<DayOfWeek> days = new List<DayOfWeek>();
+            days.Add(DayOfWeek.Sunday);
+            days.Add(DayOfWeek.Monday);
+            days.Add(DayOfWeek.Tuesday);
+            days.Add(DayOfWeek.Wednesday);
+            days.Add(DayOfWeek.Thursday);
+            days.Add(DayOfWeek.Friday);
+            days.Add(DayOfWeek.Saturday);
+            foreach (var tuple in tuples)
+            {
+                int quantity = 0;
+                int maxQuantity = 0;
+                DayOfWeek dayOfWeek = new DayOfWeek();
+                foreach (DayOfWeek day in days)
+                {
+                    List<Item> items = idal.getAllItems(y => y.Date_of_purchase.DayOfWeek == day && y.SerialKey == tuple.Item1);
+                    foreach (var item in items)
+                    {
+                        quantity += item.Quantity;
+                    }
+                    if (quantity > maxQuantity)
+                    {
+                        maxQuantity = quantity;
+                        dayOfWeek = day;
+                    }
+                }
+               itemsRecommended.Add(idal.getAllItems(x=> x.SerialKey == tuple.Item1).FirstOrDefault());
+            }
+             return itemsRecommended;*/
+            return idal.getAllItems();
+          }
+
         public void CreatePdfForDayRecomendations()
         {
             List<Tuple<string, string>> tuples = getAllProductsTupleNameKey();
@@ -91,30 +128,31 @@ namespace CustomersManagementBL
                 }
                 table.AddCell(tuple.Item2);
                 table.AddCell(dayOfWeek.ToString());
-                Document doc = new Document(PageSize.A4, 7f, 5f, 5f, 0f);
-                doc.AddTitle("Machine Learning results");
-                PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Recommended Days.pdf", FileMode.Create));
-                doc.Open();
-                //     Paragraph p1 = new Paragraph(text);
-                //   doc.Add(p1);
-
-                doc.Add(table);
-                Font x = FontFactory.GetFont("nina fett");
-
-                x.Size = 19;
-
-                x.SetStyle("Italic");
-
-                x.SetColor(0, 42, 255);
-
-
-                Paragraph c2 = new Paragraph(@"Based on our recommendations for which products to buy on which  day", x);
-                c2.IndentationLeft = 30;
-                doc.Add(c2);
-
-
-                doc.Close();
+                
             }
+            Document doc = new Document(PageSize.A4, 7f, 5f, 5f, 0f);
+            doc.AddTitle("Machine Learning results");
+            PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Recommended Days.pdf", FileMode.Create));
+            doc.Open();
+            //     Paragraph p1 = new Paragraph(text);
+            //   doc.Add(p1);
+
+            doc.Add(table);
+            Font x = FontFactory.GetFont("nina fett");
+
+            x.Size = 19;
+
+            x.SetStyle("Italic");
+
+            x.SetColor(0, 42, 255);
+
+
+            Paragraph c2 = new Paragraph(@"Based on our recommendations for which products to buy on which  day", x);
+            c2.IndentationLeft = 30;
+            doc.Add(c2);
+
+
+            doc.Close();
         }
         public void CreatePdfForStoreRecomendations()
         {

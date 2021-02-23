@@ -27,8 +27,10 @@ namespace CustomerManagementPL.UserControls
         public RecomendationViewModel currentVM = new RecomendationViewModel();
         public RecomendationsUserControl()
         {
+           
             InitializeComponent();
             DataContext = currentVM;
+         //   this.TodayLabel.Content = currentVM.today;
         }
 
         /*private void CreatePdfButton_Click(object sender, RoutedEventArgs e)

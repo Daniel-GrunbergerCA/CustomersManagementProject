@@ -4,12 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:CustomerManagementPL.UserControls"
+             xmlns:UserControls="clr-namespace:CustomerManagementPL.UserControls" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="AliceBlue">
-        <Button x:Name="CreatePdfButton" Content="Recommend Stores" HorizontalAlignment="Left" Margin="218,10,0,0" VerticalAlignment="Top" Width="358" Command="{Binding CreatePDFStores}"/>
-        <Button x:Name="CreatePdf2Button" Content="Recommend Days" HorizontalAlignment="Left" Margin="218,156,0,0" VerticalAlignment="Top" Width="358" Command="{Binding CreatePDFDays}"/>
-
+             d:DesignHeight="450" d:DesignWidth="1500">
+    <Grid Background="White">
+        <Button x:Name="CreatePdfButton" Content="Recommend Stores" HorizontalAlignment="Left" Margin="266,25,0,0" VerticalAlignment="Top" Width="241" Command="{Binding CreatePDFStores}"/>
+        <Button x:Name="CreatePdf2Button" Content="Recommend Days" HorizontalAlignment="Left" Margin="1162,25,0,0" VerticalAlignment="Top" Width="224" Command="{Binding CreatePDFDays}"/>
+        <Label Name="TodayLabel" Content="{Binding today}"  FontSize="26" Foreground="Black" HorizontalAlignment="Center" Margin="250,111,57,0" VerticalAlignment="Top" Width="1193" Height="69"/>
+        <ScrollViewer VerticalScrollBarVisibility="Auto"  >
+            <ItemsControl ItemsSource="{Binding ItemsVM}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"></StackPanel>
+                    </ItemsPanelTemplate>
+                    
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <UserControls:ItemRecommendedUserControl />
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
 
     </Grid>
 </UserControl>

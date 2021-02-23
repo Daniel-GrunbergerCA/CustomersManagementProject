@@ -122,6 +122,9 @@
     <Compile Include="UserControls\BarChartUserControl.xaml.cs">
       <DependentUpon>BarChartUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\ItemRecommendedUserControl.xaml.cs">
+      <DependentUpon>ItemRecommendedUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\LineChartUserControl.xaml.cs">
       <DependentUpon>LineChartUserControl.xaml</DependentUpon>
     </Compile>
@@ -137,6 +140,7 @@
     <Compile Include="ViewModels\ItemViewModel.cs" />
     <Compile Include="ViewModels\IViewModel.cs" />
     <Compile Include="ViewModels\RecomendationViewModel.cs" />
+    <Compile Include="ViewModels\RecommendedItemViewModel.cs" />
     <Compile Include="ViewModels\ViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -163,6 +167,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\BarChartUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\ItemRecommendedUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

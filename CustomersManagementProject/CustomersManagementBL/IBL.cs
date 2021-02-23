@@ -29,6 +29,8 @@ namespace CustomersManagementBL
 
         void CreatePdfForDayRecomendations();
 
+        List<Item> getRecommendationsForToday();
+
 
     }
 }

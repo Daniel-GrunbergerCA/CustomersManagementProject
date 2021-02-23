@@ -1,0 +1,22 @@
+﻿<UserControl x:Class="CustomerManagementPL.UserControls.ItemRecommendedUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CustomerManagementPL.UserControls"
+             xmlns:UserControls="clr-namespace:CustomerManagementPL.UserControls" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid>
+        <materialDesign:Card Margin="3,3,0,3" 
+        materialDesign:ShadowAssist.ShadowDepth="Depth3"
+        Padding="32">
+            <StackPanel Margin="4" Orientation="Vertical">
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" MinHeight="40" Text="{Binding Product.ItemName}" FontWeight="Bold" FontSize="18"/>
+                <Image Source="{Binding ProductImage}" MaxHeight="260" MaxWidth="260" MinHeight="200" Margin="3" />
+            </StackPanel>
+        </materialDesign:Card>
+        
+    </Grid>
+</UserControl>
