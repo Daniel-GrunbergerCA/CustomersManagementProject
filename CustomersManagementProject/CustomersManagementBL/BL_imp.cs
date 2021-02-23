@@ -93,7 +93,7 @@ namespace CustomersManagementBL
                 table.AddCell(dayOfWeek.ToString());
                 Document doc = new Document(PageSize.A4, 7f, 5f, 5f, 0f);
                 doc.AddTitle("Machine Learning results");
-                PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Days.pdf", FileMode.Create));
+                PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Recommended Days.pdf", FileMode.Create));
                 doc.Open();
                 //     Paragraph p1 = new Paragraph(text);
                 //   doc.Add(p1);
@@ -161,7 +161,7 @@ namespace CustomersManagementBL
             }
             Document doc = new Document(PageSize.A4, 7f, 5f, 5f, 0f);
             doc.AddTitle("Machine Learning results");
-            PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "CreatePdf.pdf", FileMode.Create));
+            PdfWriter.GetInstance(doc, new FileStream(AppDomain.CurrentDomain.BaseDirectory + "Recommended Stores.pdf", FileMode.Create));
             doc.Open();
             //     Paragraph p1 = new Paragraph(text);
             //   doc.Add(p1);

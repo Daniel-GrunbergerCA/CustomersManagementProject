@@ -10,17 +10,19 @@ namespace CustomerManagementPL.ViewModels
 {
     public class RecomendationViewModel
     {
-        public CreatePDFCommand CreatePDF { get; set; }
+        public CreatePDFCommand CreatePDFStores { get; set; }
+        public CreatePDFCommand CreatePDFDays { get; set; }
         ItemsModel itemsModel = new ItemsModel();
 
         public RecomendationViewModel()
         {
-            CreatePDF = new CreatePDFCommand();
-           // CreatePDF.GeneratePdfEvent += CreatePDF_function;
-            CreatePDF.GeneratePdfEvent += CreatePDFDays_function;
+            CreatePDFStores = new CreatePDFCommand();
+            CreatePDFDays = new CreatePDFCommand();
+            CreatePDFStores.GeneratePdfEvent += CreatePDFStores_function;
+            CreatePDFDays.GeneratePdfEvent += CreatePDFDays_function;
         }
 
-        public void CreatePDF_function()
+        public void CreatePDFStores_function()
         {
             itemsModel.CreatePdfForStoreRecomendations();
         }
