@@ -19,13 +19,21 @@
         Title="MainWindow" Height="550" Width="900">
     <Grid  x:Name="MainLayout" UserControls:CategoryListUserControl.CatalogSwitch="onCatalog_Click">
         <!-- top menu -->
-        <Border Grid.Row="0" Grid.Column="0" Background="#FFF6F4EF" Margin="5" CornerRadius="10" Grid.ColumnSpan="2" >
-            <StackPanel Grid.Row="0"  Orientation="Horizontal" >
-                <Button x:Name="Categories" Content="My Categories" Click="onCategoriesButton_Click" Margin="14 4 4 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
-                <Button x:Name="Statistics" Content="My Statistics" Click="onStatisticsButton_Click" Margin="4 4 4 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
-                <Button x:Name="Recommended" Content="My Recommended" Click="onRecommendedButton_Click" Margin="4 4 4 4" Background="#FFBC5757" BorderBrush="#FFBC5757" ></Button>
-            </StackPanel>
-        </Border>
+
+        <Grid Grid.Row="0" Grid.Column="0"  Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Border Background="#FFF6F4EF" Margin="5" CornerRadius="10" Grid.ColumnSpan="3" >
+
+            </Border>
+            <Button Grid.Column="0" x:Name="Categories" Content="My Categories" Click="onCategoriesButton_Click" MaxWidth="300" Margin="28 4 8 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
+            <Button Grid.Column="1" x:Name="Statistics" Content="My Statistics" Click="onStatisticsButton_Click" MaxWidth="300" Margin="8 4 8 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
+            <Button Grid.Column="2" x:Name="Recommended" Content="My Recommended" Click="onRecommendedButton_Click" MaxWidth="300" Margin="8 4 28 4" Background="#FFBC5757" BorderBrush="#FFBC5757" ></Button>
+
+        </Grid>
 
         <materialDesign:Card Grid.Row="1" Grid.Column="0" Background="#FFF6F4EF"
                              materialDesign:ShadowAssist.ShadowDepth="Depth3"
