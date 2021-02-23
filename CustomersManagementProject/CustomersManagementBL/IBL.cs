@@ -21,7 +21,7 @@ namespace CustomersManagementBL
         IEnumerable<IGrouping<DateTime, Item>> GetDateGroups();
         IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate();
 
-        List<Tuple<string, string>> getAllProductsTupleNameKey();
+        List<Tuple<string, string>> getAllProductsTupleNameKey(); // Returns tuples <SerialKey, ItemName>
 
         List<string> getAllStoreNames();
 

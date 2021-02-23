@@ -9,23 +9,14 @@ using static CustomersManagementDP.Enums;
 
 namespace CustomersManagementDP
 {
+    /// <summary>
+    /// This class describes an Item that was purchased.
+    /// </summary>
     public class Item
     {
         public Item() { }
 
-        //public Item(int id, string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey, double price)
-        //{
-        //    this.itemId = id;
-        //    this.itemName = name;
-        //    this.date_of_purchase = date;
-        //    this.store_location = location;
-        //    this.store_name = store_name;
-        //    this.quantity = quant;
-        //    this.categorie = cat;
-        //    this.description = description;
-        //    this.serialKey = serialKey;
-        //    this.price = price;
-        //}
+
 
         public Item(string name, DateTime date, string location, string store_name, int quant, Enums.TYPE cat, string description, string serialKey, double price, int rating)
         {

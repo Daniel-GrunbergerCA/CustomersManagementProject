@@ -45,7 +45,7 @@ namespace CustomersManagementBL
 
         public List<Item> getRecommendationsForToday()
         {
-            /*DayOfWeek today = DateTime.Now.DayOfWeek;
+            DayOfWeek today = DateTime.Now.DayOfWeek;
             List<Item> itemsRecommended = new List<Item>();
             List<Tuple<string, string>> tuples = getAllProductsTupleNameKey();
             List<DayOfWeek> days = new List<DayOfWeek>();
@@ -73,11 +73,15 @@ namespace CustomersManagementBL
                         maxQuantity = quantity;
                         dayOfWeek = day;
                     }
+                 if (dayOfWeek == today && itemsRecommended.Find(x=>x.ItemName == tuple.Item2) == null)
+                    {
+                        itemsRecommended.Add(idal.getAllItems(x => x.SerialKey == tuple.Item1).FirstOrDefault());
+                    }
                 }
-               itemsRecommended.Add(idal.getAllItems(x=> x.SerialKey == tuple.Item1).FirstOrDefault());
+             
             }
-             return itemsRecommended;*/
-            return idal.getAllItems();
+             return itemsRecommended;
+         
           }
 
         public void CreatePdfForDayRecomendations()

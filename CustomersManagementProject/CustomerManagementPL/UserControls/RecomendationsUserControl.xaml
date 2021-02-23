@@ -20,8 +20,10 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" x:Name="CreatePdfButton" Content="Recommend Stores" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="241" Command="{Binding CreatePDFStores}"/>
-            <Button Grid.Column="1" x:Name="CreatePdf2Button" Content="Recommend Days" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="224" Command="{Binding CreatePDFDays}"/>
+            <Button Grid.Column="0" x:Name="CreatePdfButton" Content="Recommend Stores (PDF)" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="241" Command="{Binding CreatePDFStores}" Click="CreatePdfButton_Click">
+
+            </Button>
+            <Button Grid.Column="1" x:Name="CreatePdf2Button" Content="Recommend Days (PDF)" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="224" Command="{Binding CreatePDFDays}" Click="CreatePdf2Button_Click"/>
 
         </Grid>
         <Label Grid.Row="1" Name="TodayLabel" Content="{Binding today}" FontSize="20" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="69"/>

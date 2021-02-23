@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace CustomersManagementDAL
 {
+    /// <summary>
+    /// To reset the db. Avoid mistakes when changing the model
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
     public class CustomInitializer<T> : DropCreateDatabaseAlways<CustomerContext>
     {
         public override void InitializeDatabase(CustomerContext context)
@@ -19,7 +23,7 @@ namespace CustomersManagementDAL
 
         protected override void Seed(CustomerContext context)
         {
-            // Seed code goes here...
+
 
             base.Seed(context);
         }
