@@ -7,14 +7,13 @@
              xmlns:UserControls="clr-namespace:CustomerManagementPL.UserControls" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
-    <Grid>
+             d:DesignHeight="200" d:DesignWidth="200">
+    <Grid >
         <materialDesign:Card Margin="3,3,0,3" 
-        materialDesign:ShadowAssist.ShadowDepth="Depth3"
-        Padding="32">
-            <StackPanel Margin="4" Orientation="Vertical">
+        materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="12">
+            <StackPanel  Orientation="Vertical">
                 <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" MinHeight="40" Text="{Binding Product.ItemName}" FontWeight="Bold" FontSize="18"/>
-                <Image Source="{Binding ProductImage}" MaxHeight="260" MaxWidth="260" MinHeight="200" Margin="3" />
+                <Image Source="{Binding ProductImage}" MaxHeight="130" MaxWidth="130" MinHeight="100" Margin="3" />
             </StackPanel>
         </materialDesign:Card>
         
