@@ -60,6 +60,11 @@ namespace CustomerManagementPL.Models
             bl.CreatePdfForStoreRecomendations();
         }
 
+        public void  CreatePdfForDayRecomendations()
+        {
+            bl.CreatePdfForDayRecomendations();
+        }
+
         public IEnumerable<IGrouping<string, IGrouping<DateTime, Item>>> groupByDate()
         {
             return bl.groupByDate();

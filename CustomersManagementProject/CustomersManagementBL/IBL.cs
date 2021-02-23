@@ -27,6 +27,8 @@ namespace CustomersManagementBL
 
         void CreatePdfForStoreRecomendations();
 
+        void CreatePdfForDayRecomendations();
+
 
     }
 }

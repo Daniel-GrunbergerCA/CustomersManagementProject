@@ -16,12 +16,18 @@ namespace CustomerManagementPL.ViewModels
         public RecomendationViewModel()
         {
             CreatePDF = new CreatePDFCommand();
-            CreatePDF.GeneratePdfEvent += CreatePDF_function;
+           // CreatePDF.GeneratePdfEvent += CreatePDF_function;
+            CreatePDF.GeneratePdfEvent += CreatePDFDays_function;
         }
 
         public void CreatePDF_function()
         {
             itemsModel.CreatePdfForStoreRecomendations();
+        }
+
+        public void CreatePDFDays_function()
+        {
+            itemsModel.CreatePdfForDayRecomendations();
         }
     }
 }
