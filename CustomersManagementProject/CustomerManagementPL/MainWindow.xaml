@@ -14,8 +14,8 @@
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
-        MinWidth="{Binding WindowMinimumWidth}"
-        MinHeight="{Binding WindowMinimumHeight}"
+        MinWidth="793"
+        MinHeight="480"
         Title="MainWindow" Height="600" Width="900" WindowStartupLocation="CenterScreen">
     <Grid  x:Name="MainLayout" UserControls:CategoryListUserControl.CatalogSwitch="onCatalog_Click">
         <!-- top menu -->
@@ -29,9 +29,9 @@
             <Border Background="#FFF6F4EF" Margin="5" CornerRadius="10" Grid.ColumnSpan="3" >
 
             </Border>
-            <Button Grid.Column="0" x:Name="Categories" Content="My Categories" Click="onCategoriesButton_Click" MaxWidth="300" Margin="28 4 8 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
-            <Button Grid.Column="1" x:Name="Statistics" Content="My Statistics" Click="onStatisticsButton_Click" MaxWidth="300" Margin="8 4 8 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
-            <Button Grid.Column="2" x:Name="Recommended" Content="My Recommended" Click="onRecommendedButton_Click" MaxWidth="300" Margin="8 4 28 4" Background="#FFBC5757" BorderBrush="#FFBC5757" ></Button>
+            <Button Grid.Column="0" x:Name="Categories" Content="Categories" Click="onCategoriesButton_Click" MaxWidth="300" Margin="28 4 8 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
+            <Button Grid.Column="1" x:Name="Statistics" Content="Statistics" Click="onStatisticsButton_Click" MaxWidth="300" Margin="8 4 8 4"  Background="#FFBC5757" BorderBrush="#FFBC5757"></Button>
+            <Button Grid.Column="2" x:Name="Recommended" Content="Recommended" Click="onRecommendedButton_Click" MaxWidth="300" Margin="8 4 28 4" Background="#FFBC5757" BorderBrush="#FFBC5757" ></Button>
 
         </Grid>
 
@@ -40,6 +40,10 @@
                              materialDesign:ShadowAssist.ShadowEdges="Bottom,Right"
                              Padding="32" />
 
+        <materialDesign:DialogHost Name="DialogDrive" IsOpen="True" Grid.ColumnSpan="3" Grid.RowSpan="3">
+            
+            
+        </materialDesign:DialogHost>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="215"/>
             <ColumnDefinition Width="*"/>
@@ -48,5 +52,7 @@
             <RowDefinition Height="67"/>
             <RowDefinition Height="353*"/>
         </Grid.RowDefinitions>
+
+        
     </Grid>
 </Window>

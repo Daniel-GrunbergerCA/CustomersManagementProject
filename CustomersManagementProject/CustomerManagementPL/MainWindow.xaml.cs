@@ -1,7 +1,9 @@
 ﻿using CustomerManagementPL.UserControls;
 using CustomerManagementPL.ViewModels;
 using CustomersManagementDP;
+using MaterialDesignThemes.Wpf;
 using System;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -20,7 +22,6 @@ namespace CustomerManagementPL
         private const short PRODUCT_CATEGORIES = 0;
         private const short PRODUCT_STATISTICS = 1;
         private const short PRODUCT_RECOMMENDED = 2;
-
         public ViewModel mViewModel { get; set; }
         private CatalogCategoryUserControl catalogBuy;
         private CatalogStatisticsUserControl catalogStat;
@@ -29,12 +30,13 @@ namespace CustomerManagementPL
         public MainWindow()
         {
             InitializeComponent();
-            mViewModel = new ViewModel(this);
             this.DataContext = mViewModel;
+            mViewModel = new ViewModel(this);
+            this.Show();
             mViewModel.Init();
-            //categoriesUC = new CategoryListUserControl(PRODUCT_CATEGORIES);
-
+            DialogDrive.IsOpen = false;
         }
+
 
         // [___]  [   ]  [   ]
         public void onCategoriesButton_Click(object sender, RoutedEventArgs e)
@@ -91,7 +93,7 @@ namespace CustomerManagementPL
 
             // the TaskManager will lead this category to the correct usercontrol
             e.Handled = true;
-            if (e.NewValue != null && categoriesUC.categoryVM.Title == "My Categories")
+            if (e.NewValue != null && categoriesUC.categoryVM.Title == "Categories")
             {
                 Enum.TryParse((string)e.NewValue, out Enums.TYPE category_catalog);
 
@@ -113,7 +115,7 @@ namespace CustomerManagementPL
                 catalogBuy.SetValue(Grid.ColumnProperty, 1);
                 MainLayout.Children.Add(catalogBuy);
             }
-            else if(e.NewValue != null && categoriesUC.categoryVM.Title == "My Statistics")
+            else if(e.NewValue != null && categoriesUC.categoryVM.Title == "Statistics")
             {
                 Enum.TryParse((string)e.NewValue, out Enums.STAT statistic_catalog);
 

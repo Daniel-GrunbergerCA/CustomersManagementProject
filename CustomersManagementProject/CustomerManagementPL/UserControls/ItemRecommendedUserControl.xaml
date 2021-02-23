@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="200" d:DesignWidth="200">
     <Grid >
-        <materialDesign:Card Margin="3,3,0,3" 
+        <materialDesign:Card Margin="4,4,4,4" 
         materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="12">
             <StackPanel  Orientation="Vertical">
                 <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" MinHeight="40" Text="{Binding Product.ItemName}" FontWeight="Bold" FontSize="18"/>

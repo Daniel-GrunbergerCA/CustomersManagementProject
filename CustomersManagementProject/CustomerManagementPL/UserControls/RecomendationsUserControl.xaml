@@ -8,30 +8,30 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="1500">
+
     <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"/>
             <RowDefinition Height="80"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0">
+        <materialDesign:Card Background="#19000000" Margin="4,4,4,4" materialDesign:ShadowAssist.ShadowDepth="Depth3" Padding="12"/>
+
+        <Grid MaxWidth="900" Grid.Row="0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Column="0" x:Name="CreatePdfButton" Content="Recommend Stores (PDF)" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="241" Command="{Binding CreatePDFStores}" Click="CreatePdfButton_Click">
-
-            </Button>
-            <Button Grid.Column="1" x:Name="CreatePdf2Button" Content="Recommend Days (PDF)" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="224" Command="{Binding CreatePDFDays}" Click="CreatePdf2Button_Click"/>
-
+            <Button Grid.Column="0" x:Name="CreatePdfButton" Content="Recommend Stores (PDF)" HorizontalAlignment="Center"  VerticalAlignment="Center" Width="241" Command="{Binding CreatePDFStores}"  />
+            <Button Grid.Column="1" x:Name="CreatePdf2Button" Content="Recommend Days (PDF)" HorizontalAlignment="Center"   VerticalAlignment="Center" Width="224" Command="{Binding CreatePDFDays}"  />
         </Grid>
-        <Label Grid.Row="1" Name="TodayLabel" Content="{Binding today}" FontSize="20" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Center" Width="Auto" Height="69"/>
-        <ScrollViewer Grid.Row="2" Margin="30" VerticalScrollBarVisibility="Auto"  >
-            <ItemsControl ItemsSource="{Binding ItemsVM}" >
+        <Label Grid.Row="1" Name="TodayLabel" Content="{Binding today}" FontSize="22" Foreground="Black" HorizontalAlignment="Center" VerticalAlignment="Bottom" Width="Auto" Height="Auto"/>
+        <ScrollViewer Grid.Row="2" Margin="20" Background="#66858585" BorderThickness="5" BorderBrush="#FF656262" VerticalScrollBarVisibility="Auto" Padding="1"  >
+            <ItemsControl ItemsSource="{Binding ItemsVM}"  >
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
-                        <WrapPanel></WrapPanel>
+                        <WrapPanel/>
                     </ItemsPanelTemplate>
                     
                 </ItemsControl.ItemsPanel>
@@ -42,6 +42,13 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </ScrollViewer>
+        <materialDesign:Snackbar  Grid.Row="2" VerticalAlignment="Bottom" x:Name="SnackbarMessage" MessageQueue="{Binding PDFMessageQueue}" >
+            
+        </materialDesign:Snackbar>
+        
+
+
+        
 
     </Grid>
 </UserControl>

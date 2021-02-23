@@ -30,7 +30,7 @@ namespace CustomerManagementPL.Commands
 
         public void Execute(object parameter)
         {
-            if (GeneratePdfEvent != null)
+            //if (GeneratePdfEvent != null)
                 GeneratePdfEvent();
         }
     }

@@ -33,16 +33,6 @@ namespace CustomerManagementPL.UserControls
          //   this.TodayLabel.Content = currentVM.today;
         }
 
-        private void CreatePdfButton_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Recommendations saved to : " + AppDomain.CurrentDomain.BaseDirectory + "Recommended Days.pdf","Success",MessageBoxButton.OK,MessageBoxImage.Information);
-        }
-
-        private void CreatePdf2Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Recommendations saved to : " + AppDomain.CurrentDomain.BaseDirectory + "Recommended Days.pdf", "Success", MessageBoxButton.OK, MessageBoxImage.Information);
-        }
-
         /*private void CreatePdfButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog() { Filter = "PDF files|*.pdf", ValidateNames = true, Multiselect = false };

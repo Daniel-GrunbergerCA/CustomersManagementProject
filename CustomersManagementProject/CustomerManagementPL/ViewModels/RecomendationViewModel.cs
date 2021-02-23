@@ -1,12 +1,10 @@
 ﻿using CustomerManagementPL.Commands;
 using CustomerManagementPL.Models;
 using CustomersManagementDP;
+using MaterialDesignThemes.Wpf;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace CustomerManagementPL.ViewModels
 {
@@ -14,6 +12,10 @@ namespace CustomerManagementPL.ViewModels
     {
         public CreatePDFCommand CreatePDFStores { get; set; }
         public CreatePDFCommand CreatePDFDays { get; set; }
+        public string PopUpbarMessage { get; set; }
+        public bool PopUpEnabled { get; set; }
+
+        public SnackbarMessageQueue PDFMessageQueue { get; set; }
 
         public string today { get; set; }
         ItemsModel itemsModel = new ItemsModel();
@@ -27,16 +29,22 @@ namespace CustomerManagementPL.ViewModels
             CreatePDFStores.GeneratePdfEvent += CreatePDFStores_function;
             CreatePDFDays.GeneratePdfEvent += CreatePDFDays_function;
             generateCollectionFromModel();
+            PopUpEnabled = false;
+            PDFMessageQueue = new SnackbarMessageQueue();
         }
 
         public void CreatePDFStores_function()
         {
             itemsModel.CreatePdfForStoreRecomendations();
+            PDFMessageQueue.Enqueue("The recommendations saved as 'Recommended Stores.pdf'");
+            PDFMessageQueue.Enqueue("path: " + AppDomain.CurrentDomain.BaseDirectory + "Recommended Stores.pdf");
         }
 
         public void CreatePDFDays_function()
         {
             itemsModel.CreatePdfForDayRecomendations();
+            PDFMessageQueue.Enqueue("The recommendations saved as 'Recommended Days.pdf'");
+            PDFMessageQueue.Enqueue("path: " + AppDomain.CurrentDomain.BaseDirectory + "Recommended Days.pdf");
         }
 
 

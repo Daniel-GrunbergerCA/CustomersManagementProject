@@ -42,7 +42,7 @@ namespace CustomerManagementPL.UserControls
                 {
                     productCategories.Add(value.ToString());
                 };
-                categoryVM = new CategoryViewModel("My Categories", productCategories);
+                categoryVM = new CategoryViewModel("Categories", productCategories);
             }
 
             /*
@@ -57,7 +57,7 @@ namespace CustomerManagementPL.UserControls
                 {
                     productStatistics.Add(value.ToString());
                 };
-                categoryVM = new CategoryViewModel("My Statistics", productStatistics);
+                categoryVM = new CategoryViewModel("Statistics", productStatistics);
             }
         }
 
